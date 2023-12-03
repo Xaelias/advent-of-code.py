@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # Author            : Alexis Lesieur <Me@ALesieur.net>
 # Date              : 2023/12/03 08:58:22
-# Last Modified Date: 2023/12/03 11:04:53
+# Last Modified Date: 2023/12/03 11:24:57
 # Last Modified By  : Alexis Lesieur <Me@ALesieur.net>
 from loguru import logger
 from typing import Optional
@@ -21,6 +21,10 @@ def find_symbols_indexes(line: str) -> list[int]:
 
 def extract_number_at_index(line: str, index: int) -> Optional[int]:
     logger.trace(f"Trying to extract numbers from {line=} at {index=}.")
+
+    if not line:
+        logger.trace(f"Skipping empty line. [{line=}]")
+        return None, line
 
     if index < 0:
         logger.trace(f"Skipping index < 0. [{line=}, {index=}]")
