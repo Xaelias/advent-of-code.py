@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # Author            : Alexis Lesieur
 # Date              : 2023/12/04 16:02:12
-# Last Modified Date: 2023/12/04 16:39:29
+# Last Modified Date: 2023/12/04 17:02:13
 # Last Modified By  : Alexis Lesieur
 from collections import namedtuple
 from loguru import logger
@@ -113,5 +113,5 @@ def test_test_input():
     assert data[4].count == 14
     assert data[5].count == 1
 
-def test_part_one():
+def test_full_input():
     assert main(None) == 8736438

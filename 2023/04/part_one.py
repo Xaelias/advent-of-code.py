@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # Author            : Alexis Lesieur
 # Date              : 2023/12/04 15:39:32
-# Last Modified Date: 2023/12/04 15:53:14
+# Last Modified Date: 2023/12/04 17:02:03
 # Last Modified By  : Alexis Lesieur
 from loguru import logger
 
@@ -71,5 +71,5 @@ def test_process_line():
 def test_test_input():
     assert process_input(TEST_INPUT) == 13
 
-def test_part_one():
+def test_full_input():
     assert main(None) == 24542
