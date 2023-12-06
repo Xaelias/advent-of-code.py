@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 # Author            : Alexis Lesieur <Me@ALesieur.net>
 # Date              : 2023/12/02 09:29:49
-# Last Modified Date: 2023/12/02 10:50:18
-# Last Modified By  : Alexis Lesieur <Me@ALesieur.net>
+# Last Modified Date: 2023/12/05 22:53:21
+# Last Modified By  : Alexis Lesieur
 from collections import namedtuple
 from loguru import logger
 
@@ -47,12 +47,6 @@ class Game:
     def __eq__(self, other):
         if self.id != other.id:
             logger.debug(f"{self=} and {other=} have different ids")
-            return False
-        if self.red != other.red:
-            return False
-        if self.green != other.green:
-            return False
-        if self.blue != other.blue:
             return False
         if len(self.draws) != len(other.draws):
             return False
@@ -151,8 +145,8 @@ def test_equal(games):
     assert games[1] != games[5]
 
 def test_parse(games):
-    assert parse_game("Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green") == games[1]
-    assert parse_game("Game 2: 1 blue, 2 green; 3 green, 4 blue, 1 red; 1 green, 1 blue") == games[2]
-    assert parse_game("Game 3: 8 green, 6 blue, 20 red; 5 blue, 4 red, 13 green; 5 green, 1 red") == games[3]
-    assert parse_game("Game 4: 1 green, 3 red, 6 blue; 3 green, 6 red; 3 green, 15 blue, 14 red") == games[4]
-    assert parse_game("Game 5: 6 red, 1 blue, 3 green; 2 blue, 1 red, 2 green") == games[5]
+    assert Game.parse_game("Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green") == games[1]
+    assert Game.parse_game("Game 2: 1 blue, 2 green; 3 green, 4 blue, 1 red; 1 green, 1 blue") == games[2]
+    assert Game.parse_game("Game 3: 8 green, 6 blue, 20 red; 5 blue, 4 red, 13 green; 5 green, 1 red") == games[3]
+    assert Game.parse_game("Game 4: 1 green, 3 red, 6 blue; 3 green, 6 red; 3 green, 15 blue, 14 red") == games[4]
+    assert Game.parse_game("Game 5: 6 red, 1 blue, 3 green; 2 blue, 1 red, 2 green") == games[5]
