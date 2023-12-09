@@ -70,7 +70,7 @@ class PartOne(PartZero):
             return 0
 
         next_list = seq(zip(numbers, numbers[1:])).starmap(lambda x, y: y - x).to_list()
-        return numbers[index] + sign *  PartOne.reduce(next_list, index, sign)
+        return numbers[index] + sign * PartOne.reduce(next_list, index, sign)
 
 
 class PartOneExample(PartOne):
