@@ -126,4 +126,4 @@ Your puzzle answer was `6472060`.
 
 Both parts of this puzzle are complete! They provide two gold stars: **
 
-If you still want to see it, you can [get your puzzle input](https://adventofcode.com/2023/day/5/input).
+If you still want to see it, you can [get your puzzle input](../5/input).

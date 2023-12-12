@@ -73,4 +73,4 @@ Your puzzle answer was `91031374`.
 
 Both parts of this puzzle are complete! They provide two gold stars: **
 
-If you still want to see it, you can [get your puzzle input](https://adventofcode.com/2023/day/3/input).
+If you still want to see it, you can [get your puzzle input](../3/input).

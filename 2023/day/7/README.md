@@ -87,4 +87,4 @@ Your puzzle answer was `245461700`.
 
 Both parts of this puzzle are complete! They provide two gold stars: **
 
-If you still want to see it, you can [get your puzzle input](https://adventofcode.com/2023/day/7/input).
+If you still want to see it, you can [get your puzzle input](../7/input).

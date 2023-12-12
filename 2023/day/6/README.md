@@ -72,4 +72,4 @@ Your puzzle answer was `36992486`.
 
 Both parts of this puzzle are complete! They provide two gold stars: **
 
-If you still want to see it, you can [get your puzzle input](https://adventofcode.com/2023/day/6/input).
+If you still want to see it, you can [get your puzzle input](../6/input).

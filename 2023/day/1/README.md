@@ -54,4 +54,4 @@ In this example, the calibration values are `29`, `83`, `13`, `24`, `42`, `14`, 
 
 Your puzzle answer was `55358`.
 
-If you still want to see it, you can [get your puzzle input](https://adventofcode.com/2023/day/1/input).
+If you still want to see it, you can [get your puzzle input](../1/input).
