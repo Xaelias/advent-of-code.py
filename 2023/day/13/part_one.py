@@ -12,7 +12,7 @@ from part_zero import Input
 from part_zero import PartZero
 from part_zero import Prompt
 
-ArrayNxM = Annotated[npt.NDArray[Union[bool | str]], Literal["N", "N"]]
+ArrayNxM = Annotated[npt.NDArray[Union[bool | str]], Literal["N", "M"]]
 
 with suppress(Exception):
     logger.level("FAILED", no=41, color="<red>")
