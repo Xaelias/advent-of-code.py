@@ -62,9 +62,9 @@ class Prompt:
 class PartZero(ABC):
     parsed: dict[Input, Any] = {}
 
-    @staticmethod
+    @classmethod
     @abstractmethod
-    def process(parsed_input: Any, **kwargs: Any) -> int:
+    def process(cls, parsed_input: Any, **kwargs: Any) -> int:
         ...
 
     @classmethod
