@@ -81,7 +81,7 @@ def pprint(
         printable_mirror[-header_height:, idx - 1] = np.transpose(list(str(v).ljust(header_height)))
 
     for row in printable_mirror:
-        logger.log(log_level, "".join(["." if c == "T" else "#" if c == "F" else c for c in row]))
+        logger.log(log_level, "".join(row))
 
     # empty line for readability
     logger.log(log_level, "")
@@ -111,10 +111,7 @@ class PartOne(PartZero):
     def parse(cls, input: Input) -> list[ArrayNxM]:
         mirrors = []
         for mirror in input.split_on_empty_lines():
-            mirrors.append(
-                # store as True / False, doesnt matter which except for ``pprint``
-                np.array([[c == "#" for c in line] for line in mirror])
-            )
+            mirrors.append(np.array([list(line) for line in mirror]))
         return mirrors
 
     @classmethod
