@@ -1,6 +1,8 @@
 from collections import OrderedDict
+from collections.abc import Iterable
 from collections.abc import Iterator
 from contextlib import suppress
+from dataclasses import dataclass
 
 from loguru import logger
 from part_zero import Input
@@ -17,14 +19,47 @@ def hash(string: str) -> int:
     return (hash(string[:-1]) + ord(string[-1])) * 17 % 256
 
 
-def focus_power(box_id: int, lenses: dict[str, int]) -> int:
-    return sum(
-        (
-            (box_id + 1) * (lens_id + 1) * lens_focus
-            for lens_id, lens_label in enumerate(lenses)
-            if (lens_focus := lenses[lens_label])
+@dataclass
+class Box:
+    idx: int
+    lenses: dict[str, int]
+
+    def focus_power(self) -> int:
+        return sum(
+            (
+                (self.idx + 1) * (lens_id + 1) * lens_focus
+                for lens_id, lens_label in enumerate(self.lenses)
+                if (lens_focus := self.lenses[lens_label])
+            )
         )
-    )
+
+    def __getitem__(self, key: str) -> int:
+        return self.lenses[key]
+
+    def __setitem__(self, key: str, val: int) -> None:
+        self.lenses[key] = val
+
+    def pop(self, key):
+        return self.lenses.pop(key, None)
+
+
+class Boxes(Iterable):
+    def __init__(self, size: int) -> None:
+        self.boxes = [Box(i, OrderedDict()) for i in range(size)]
+
+    def __iter__(self) -> Iterator[Box]:
+        return iter(self.boxes)
+
+    def swap_lens(self, operation: str) -> None:
+        op = "=" if "=" in operation else "-"
+        label, lens = operation.split(op)
+        box_id = hash(label)
+        box = self.boxes[box_id]
+
+        if op == "-":
+            box.pop(label)
+        else:
+            box[label] = int(lens)
 
 
 class PartOne(PartZero):
@@ -40,20 +75,9 @@ class PartOne(PartZero):
 class PartTwo(PartOne):
     @classmethod
     def process(cls, parsed_input: list[str]) -> int:  # type: ignore
-        boxes: list[dict[str, int]] = [OrderedDict() for _ in range(256)]
-
-        for chunk in parsed_input:
-            operation = "=" if "=" in chunk else "-"
-            label, lens = chunk.split(operation)
-            box_id = hash(label)
-            box = boxes[box_id]
-
-            if operation == "-":
-                box.pop(label, None)
-            else:
-                box[label] = int(lens)
-
-        return sum((focus_power(idx, box) for idx, box in enumerate(boxes)))
+        boxes = Boxes(256)
+        any(map(boxes.swap_lens, parsed_input))
+        return sum(list(map(Box.focus_power, (box for box in boxes))))
 
 
 test_input = Input("./test_input")
