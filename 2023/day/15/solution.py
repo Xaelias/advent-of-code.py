@@ -1,3 +1,4 @@
+import os
 from collections import OrderedDict
 from collections.abc import Iterable
 from collections.abc import Iterator
@@ -5,12 +6,12 @@ from contextlib import suppress
 from dataclasses import dataclass
 
 from loguru import logger
-from part_zero import Input
-from part_zero import PartZero
-from part_zero import Prompt
+
+from aocl.base import AoCInput
+from aocl.base import Base
 
 with suppress(Exception):
-    logger.level("FAILED", no=41, color="<red>")
+    logger.level("FAILED", no=25, color="<red>")
 
 
 def hash(string: str) -> int:
@@ -62,36 +63,26 @@ class Boxes(Iterable):
             box[label] = int(lens)
 
 
-class PartOne(PartZero):
+class Solution(Base):
     @classmethod
-    def parse(cls, input: Input) -> list[str]:
-        return input.as_str.strip().split(",")
+    def parse(cls, input_data: AoCInput) -> list[str]:
+        return input_data.raw.split(",")
 
     @classmethod
-    def process(cls, parsed_input: list[str]) -> int:  # type: ignore
-        return sum((hash(string) for string in parsed_input))
+    def process_part_one(cls, parsed_input: list[str], **kwargs) -> int:
+        return sum(hash(string) for string in parsed_input)
 
-
-class PartTwo(PartOne):
     @classmethod
-    def process(cls, parsed_input: list[str]) -> int:  # type: ignore
+    def process_part_two(cls, parsed_input: list[str], **kwargs) -> int:
         boxes = Boxes(256)
         any(map(boxes.swap_lens, parsed_input))
         return sum(list(map(Box.focus_power, (box for box in boxes))))
 
 
-test_input = Input("./test_input")
-real_input = Input("./input")
-
-
-def main() -> Iterator[bool]:
-    HASH_hash = hash("HASH")
-    assert HASH_hash == 52, f"{HASH_hash} != 52"
-    yield PartOne.solve(Prompt(test_input, expected=1320))
-    yield PartOne.solve(Prompt(real_input, expected=498538))
-    yield PartTwo.solve(Prompt(test_input, expected=145))
-    yield PartTwo.solve(Prompt(real_input, expected=286278))
+def main() -> None:
+    _, year, _, day = os.path.dirname(__file__).rsplit("/", maxsplit=3)
+    Solution(year=year, day=day).solve_all()
 
 
 if __name__ == "__main__":
-    all(main())
+    main()
