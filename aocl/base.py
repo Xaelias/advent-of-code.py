@@ -122,7 +122,7 @@ class Base(ABC):
     def process_part_two(cls, parsed_input: Any, **kwargs: Any) -> int | str:
         return cls.process_part_one(parsed_input, **kwargs)
 
-    def solve_tests(self, part_id: int) -> tuple[int, int]:
+    def solve_tests(self, part_id: int) -> bool:
         match part_id:
             case 1:
                 prompt_list = "part_one"
@@ -161,7 +161,7 @@ class Base(ABC):
                             "FAILED", f"{prefix} - Found {solution} != expected {expected}{suffix}"
                         )
                         failures += 1
-        return example_id - failures, failures
+        return failures != example_id
 
     def solve_reals(self, part_id: int) -> bool:
         match part_id:
