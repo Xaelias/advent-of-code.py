@@ -1,18 +1,11 @@
 import re
 from collections.abc import Iterator
-from contextlib import suppress
 from functools import cache
 from typing import Any
 from typing import Optional
 
-from loguru import logger
-
-from part_zero import Input
-from part_zero import PartZero
-from part_zero import Prompt
-
-with suppress(Exception):
-    logger.level("FAILED", no=41, color="<red>")
+from aocl.base import AoCInput
+from aocl.base import Base
 
 
 class Row:
@@ -58,44 +51,30 @@ class Record:
         return iter(self.rows)
 
 
-class PartOne(PartZero):
+class Solution(Base):
     @staticmethod
     def parse_line(line: str) -> Row:
         springs, damaged = line.split(" ")
         return Row(springs, tuple(map(int, damaged.split(","))))
 
     @classmethod
-    def parse(cls, input: Input) -> Any:
-        return Record(list(map(cls.parse_line, iter(input))))
+    def parse(cls, input_data: AoCInput) -> Record:
+        return Record(list(map(cls.parse_line, input_data.as_list_of_str)))
+
+    @classmethod
+    def process_part_one(cls, parsed_input: Record, **kwargs: Any) -> int:
+        return sum(map(lambda r: r.count_solutions(), iter(parsed_input)))
 
     @staticmethod
-    def process(parsed_input: Any) -> int:  # type: ignore
-        record: Record = parsed_input
-        return sum(map(lambda r: r.count_solutions(), iter(record)))
-
-
-class PartTwo(PartOne):
-    @staticmethod
-    def parse_line(line: str) -> Row:
+    def parse_line_part_two(line: str) -> Row:
         springs, damaged = line.split(" ")
         damaged_tuple = tuple(map(int, damaged.split(",")))
         return Row("?".join([springs] * 5), damaged_tuple * 5)
 
+    @classmethod
+    def parse_part_two(cls, input_data: AoCInput) -> Record:
+        return Record(list(map(cls.parse_line_part_two, input_data.as_list_of_str)))
 
-test_input = Input("./test_input")
-real_input = Input("./input")
-
-
-def main() -> Iterator[bool]:
-    yield PartOne.solve(Prompt(test_input, expected=21))
-    yield PartOne.solve(Prompt(real_input, expected=7118))
-    yield PartTwo.solve(Prompt(test_input, expected=525_152))
-    yield PartTwo.solve(Prompt(real_input, expected=7_030_194_981_795))
-
-
-if __name__ == "__main__":
-    all(main())
-
-
-def test_results() -> None:
-    assert all(main())
+    @classmethod
+    def process_part_two(cls, parsed_input: Record, **kwargs: Any) -> int:
+        return sum(map(lambda r: r.count_solutions(), iter(parsed_input)))
