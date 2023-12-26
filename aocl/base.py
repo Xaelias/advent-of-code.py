@@ -110,7 +110,6 @@ class Base(ABC):
         ...
 
     @classmethod
-    @cache
     def parse_part_two(cls, input_data: AoCInput) -> Any:
         return cls.cached_parse_part_one(input_data)
 
@@ -220,7 +219,7 @@ class Base(ABC):
         try:
             answer_a = str(
                 self.process_part_one(
-                    self.parse(AoCInput(self.puzzle.prompt.input_data)),
+                    self.cached_parse_part_one(AoCInput(self.puzzle.prompt.input_data)),
                     **self.kwargs_part_one,
                 )
             )
@@ -229,7 +228,7 @@ class Base(ABC):
         try:
             answer_b = str(
                 self.process_part_two(
-                    self.parse_part_two(AoCInput(self.puzzle.prompt.input_data)),
+                    self.cached_parse_part_two(AoCInput(self.puzzle.prompt.input_data)),
                     **self.kwargs_part_two,
                 )
             )

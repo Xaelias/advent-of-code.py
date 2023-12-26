@@ -1,4 +1,5 @@
 import argparse
+import cProfile
 import importlib
 import json
 import os
@@ -72,6 +73,11 @@ def cli() -> None:
         choices=["TRACE", "DEBUG", "INFO", "SUCCESS", "FAILED", "WARNING", "ERROR", "CRITICAL"],
         default="INFO",
     )
+    main_args_parser.add_argument(
+        "--profile",
+        action="store_true",
+        help="Run day through cProfile"
+    )
 
     parts_args_parser = parser.add_argument_group("Parts Selector")
     parts_args_parser.add_argument(
@@ -122,7 +128,7 @@ def cli() -> None:
         "solve_part_two_examples": parts_default or args.part_two_examples or args.all,
     }
     with launch_ipdb_on_exception():
-        mod.Solution(
+        solution = mod.Solution(
             year=args.year,
             day=args.day,
             part_one_answer=args.answer_a,
@@ -131,7 +137,13 @@ def cli() -> None:
             kwargs_part_two=parse_key_value_pairs(args.kwargs2),
             continue_on_failure=args.continue_on_failure,
             **parts_to_run,
-        ).solve_all()
+        )
+        if args.profile:
+            with cProfile.Profile() as pr:
+                solution.solve_all()
+            pr.print_stats(sort="tottime")
+        else:
+            solution.solve_all()
 
 
 def mysolve(year: int, day: int, data: str) -> None:
