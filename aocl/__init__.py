@@ -73,11 +73,7 @@ def cli() -> None:
         choices=["TRACE", "DEBUG", "INFO", "SUCCESS", "FAILED", "WARNING", "ERROR", "CRITICAL"],
         default="INFO",
     )
-    main_args_parser.add_argument(
-        "--profile",
-        action="store_true",
-        help="Run day through cProfile"
-    )
+    main_args_parser.add_argument("--profile", action="store_true", help="Run day through cProfile")
 
     parts_args_parser = parser.add_argument_group("Parts Selector")
     parts_args_parser.add_argument(
@@ -149,4 +145,5 @@ def cli() -> None:
 def mysolve(year: int, day: int, data: str) -> None:
     mod_name = "{}.day.{}.solution".format(year, day)
     mod = importlib.import_module(mod_name)
+    logger.remove()
     return mod.Solution(year=year, day=day, data=data).get_answers()
