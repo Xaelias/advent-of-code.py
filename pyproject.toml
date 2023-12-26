@@ -1,3 +1,21 @@
+[project]
+name = "advent-of-code-libraries"
+description = "All my libraries for Advent of Code"
+
+requires-python = ">=3.12"
+dynamic = ["version"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+#include = ["libs.*"]
+#include = ["input"]
+
+[project.scripts]
+aocl = "aocl:cli"
+
+[project.entry-points."adventofcode.user"]
+"alesieur" = "aocl:mysolve"
+
 [tool.ruff]
 line-length = 100
 
