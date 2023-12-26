@@ -1,17 +1,12 @@
 import hashlib
-from collections.abc import Iterator
-from contextlib import suppress
+from dataclasses import dataclass
 from typing import Any
 from typing import Self
 
 import numpy as np
-from loguru import logger
-from part_zero import Input
-from part_zero import PartZero
-from part_zero import Prompt
 
-with suppress(Exception):
-    logger.level("FAILED", no=41, color="<red>")
+from aocl.base import AoCInput
+from aocl.base import Base
 
 
 class Dish:
@@ -68,25 +63,41 @@ class Dish:
         return sum([(idx + 1) * np.sum(row) for idx, row in enumerate(self.array[::-1] == "O")])
 
 
-class PartOne(PartZero):
+class Solution(Base):
     @classmethod
-    def parse(cls, input: Input) -> Dish:
-        return Dish(np.array([list(line) for line in input.as_list_of_str]))
+    def parse(cls, input_data: AoCInput) -> Any:
+        return Dish(np.array([list(line) for line in input_data.as_list_of_str]))
 
     @classmethod
-    def process(cls, dish: Dish) -> int:  # type: ignore
+    def process_part_one(cls, parsed_input: Any, **kwargs: Any) -> int:
+        dish: Dish = parsed_input
         dish.move_north()
         return dish.points()
 
+    @classmethod
+    def process_part_two(cls, parsed_input: Any, **kwargs: Any) -> int:
+        @dataclass
+        class Cache:
+            result: Any
+            spin_cycle: int
 
-test_input = Input("./test_input")
-real_input = Input("./input")
+        max_spin_cycles_count = int(1e9)
 
+        dish: Dish = parsed_input
+        cache: dict[int, Cache] = {}
 
-def main() -> Iterator[bool]:
-    yield PartOne.solve(Prompt(test_input, expected=136))
-    yield PartOne.solve(Prompt(real_input, expected=110779))
+        spin_cycles_count = 0
+        while (h := dish.hash) not in cache:
+            dish.spin_cycle()
+            cache[h] = Cache(spin_cycle=spin_cycles_count, result=dish.copy())
+            spin_cycles_count += 1
 
+        cycle_length = spin_cycles_count - cache[h].spin_cycle
+        spin_cycles_count += (
+            (max_spin_cycles_count - spin_cycles_count - 1) // cycle_length
+        ) * cycle_length
 
-if __name__ == "__main__":
-    all(main())
+        while (spin_cycles_count := spin_cycles_count + 1) <= max_spin_cycles_count:
+            dish = cache[dish.hash].result
+
+        return dish.points()
