@@ -119,9 +119,8 @@ class Base(ABC):
         ...
 
     @classmethod
-    @abstractmethod
     def process_part_two(cls, parsed_input: Any, **kwargs: Any) -> int | str:
-        ...
+        return cls.process_part_one(parsed_input, **kwargs)
 
     def solve_tests(self, part_id: int) -> tuple[int, int]:
         match part_id:

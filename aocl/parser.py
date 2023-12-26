@@ -108,6 +108,8 @@ class Puzzle:
                     if not line or line.startswith("#"):
                         continue
                     key, value = line.split(": ", maxsplit=1)
+                    if key == "extra":
+                        continue
                     part = key[-1:]
                     target = key[:-2]
                     if wip and (wip.get("part") != part or target in wip):
