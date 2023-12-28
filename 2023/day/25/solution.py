@@ -1,17 +1,11 @@
 import math
-from contextlib import suppress
 from dataclasses import dataclass
 from typing import Any
-
-from loguru import logger
 
 from aocl.base import AoCInput
 from aocl.base import Base
 
 # set_start_method("spawn")
-
-with suppress(Exception):
-    logger.level("FAILED", no=25, color="<red>")
 
 
 @dataclass

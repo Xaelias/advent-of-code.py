@@ -2,16 +2,10 @@ import os
 from collections import OrderedDict
 from collections.abc import Iterable
 from collections.abc import Iterator
-from contextlib import suppress
 from dataclasses import dataclass
-
-from loguru import logger
 
 from aocl.base import AoCInput
 from aocl.base import Base
-
-with suppress(Exception):
-    logger.level("FAILED", no=25, color="<red>")
 
 
 def hash(string: str) -> int:
