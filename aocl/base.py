@@ -161,7 +161,7 @@ class Base(ABC):
                             "FAILED", f"{prefix} - Found {solution} != expected {expected}{suffix}"
                         )
                         failures += 1
-        return failures != example_id
+        return example_id == 0 or (failures != example_id)
 
     def solve_reals(self, part_id: int) -> bool:
         match part_id:
