@@ -3,8 +3,8 @@ from typing import Iterable
 
 RULD = [(0, 1), (-1, 0), (0, -1), (1, 0)]
 
-type P2 = tuple[int, int]
-type Shape = tuple[int, int]
+P2 = tuple[int, int]
+Shape = tuple[int, int]
 
 
 def in_shape(position: P2, shape: Shape) -> bool:
