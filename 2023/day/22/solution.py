@@ -39,7 +39,7 @@ class Brick:
 
     @staticmethod
     @cache
-    def touches(x1, y1, x2, y2, xx1, yy1, xx2, yy2) -> bool:
+    def touches(x1: int, y1: int, x2: int, y2: int, xx1: int, yy1: int, xx2: int, yy2: int) -> bool:
         x_seg = (min(x1, x2), max(x1, x2))
         y_seg = (min(y1, y2), max(y1, y2))
 
