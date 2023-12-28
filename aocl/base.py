@@ -56,6 +56,10 @@ class AoCInput:
     def as_list_of_nparray(self):
         return [np.array(chunk) for chunk in self.as_chunks]
 
+    @property
+    def as_list_of_lists(self) -> list[list[str]]:
+        return [list(line) for line in self.as_list_of_str]
+
 
 class Base(ABC):
     def __init__(

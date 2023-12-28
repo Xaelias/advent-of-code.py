@@ -2,16 +2,18 @@ import os
 from typing import Any
 from typing import Optional
 
-import numpy as np
-
 from aocl import p2
 from aocl.base import AoCInput
 from aocl.base import Base
 from aocl.linalg import quadratic_solve
+from aocl.p2 import P2
+from aocl.p2 import StrMatrix
 
 
-def advance_n_steps(matrix, occupied, steps: int, enforce_boundaries: bool = True):
-    boundaries = matrix.shape
+def advance_n_steps(
+    matrix: StrMatrix, occupied: set[P2], steps: int, enforce_boundaries: bool = True
+) -> set[P2]:
+    boundaries = (len(matrix), len(matrix[0]))
     for i in range(steps):
         new_occupied = set()
         for position in occupied:
@@ -27,12 +29,19 @@ def advance_n_steps(matrix, occupied, steps: int, enforce_boundaries: bool = Tru
 class Solution(Base):
     @classmethod
     def parse(cls, input_data: AoCInput) -> Any:
-        return input_data.as_nparray
+        return input_data.as_list_of_lists
 
     @classmethod
     def process_part_one(cls, parsed_input: Any, **kwargs: Any) -> int:
-        where = np.where(parsed_input == "S")
-        start = (where[0][0], where[1][0])
+        matrix: list[list[str]] = parsed_input
+        for i in range(len(matrix)):
+            for j in range(len(matrix[0])):
+                if matrix[i][j] == "S":
+                    start = (i, j)
+                    break
+                else:
+                    continue
+                break  # noqa
 
         occupied = {start}
         return len(advance_n_steps(parsed_input, occupied, 64))
@@ -41,10 +50,17 @@ class Solution(Base):
     def process_part_two(
         cls, parsed_input: Any, steps: Optional[list[int]] = None, **kwargs: Any
     ) -> int | str:
-        where = np.where(parsed_input == "S")
-        start = (where[0][0], where[1][0])
+        matrix: list[list[str]] = parsed_input
+        n = len(matrix)
+        for i in range(n):
+            for j in range(n):
+                if matrix[i][j] == "S":
+                    start = (i, j)
+                    break
+                else:
+                    continue
+                break  # noqa
 
-        n = parsed_input.shape[0]
         offset = n // 2
         results: list[int] = []
 
@@ -55,7 +71,7 @@ class Solution(Base):
             results = []
             for threshold in steps:
                 occupied = advance_n_steps(
-                    parsed_input, occupied, threshold - prev_threshold, enforce_boundaries=False
+                    matrix, occupied, threshold - prev_threshold, enforce_boundaries=False
                 )
                 results.append(len(occupied))
                 prev_threshold = threshold
@@ -63,7 +79,7 @@ class Solution(Base):
 
         for threshold in [i * n + offset for i in range(3)]:
             occupied = advance_n_steps(
-                parsed_input, occupied, threshold - prev_threshold, enforce_boundaries=False
+                matrix, occupied, threshold - prev_threshold, enforce_boundaries=False
             )
             results.append(len(occupied))
             prev_threshold = threshold

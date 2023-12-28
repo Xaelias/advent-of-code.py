@@ -1,9 +1,14 @@
 from functools import cache
 from typing import Iterable
+from typing import Optional
 
 RULD = [(0, 1), (-1, 0), (0, -1), (1, 0)]
 
 P2 = tuple[int, int]
+Matrix = list[list[int | str | bool]]
+StrMatrix = list[list[str]]
+IntMatrix = list[list[int]]
+BoolMatrix = list[list[bool]]
 Shape = tuple[int, int]
 
 
@@ -11,7 +16,7 @@ def in_shape(position: P2, shape: Shape) -> bool:
     return 0 <= position[0] < shape[0] and 0 <= position[1] < shape[1]
 
 
-def adj(position: P2, shape: Shape) -> Iterable[P2]:
+def adj(position: P2, shape: Optional[Shape]) -> Iterable[P2]:
     neighbors = [
         (position[0], position[1] + 1),  # R
         (position[0] + 1, position[1]),  # D
