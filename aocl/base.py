@@ -41,6 +41,10 @@ class AoCInput:
         return self.raw.split("\n")
 
     @property
+    def as_columns(self) -> list[str]:
+        return list(map("".join, zip(*self.as_list_of_str)))
+
+    @property
     def as_seq(self) -> Sequence:
         return seq(self.as_list_of_str)
 

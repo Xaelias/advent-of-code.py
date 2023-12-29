@@ -1,103 +1,68 @@
-import hashlib
-from dataclasses import dataclass
 from typing import Any
-from typing import Self
-
-import numpy as np
 
 from aocl.base import AoCInput
 from aocl.base import Base
+from aocl.p2 import rotate_matrix_left
 
 
-class Dish:
-    def __init__(self, array: Any) -> None:
-        self.array = array
+def move_north(matrix: tuple[str, ...]) -> tuple[str, ...]:
+    new_columns = []
+    for column in matrix:
+        new_sections = []
+        for section in column.split("#"):
+            n = section.count("O")
+            new_sections.append("O" * n + "." * (len(section) - n))
+        new_columns.append("#".join(new_sections))
+    return tuple(new_columns)
 
-    @property
-    def hash(self) -> int:
-        return int(hashlib.sha256(self.array.data).hexdigest(), 16)
 
-    def copy(self) -> Self:
-        return self.__class__(np.copy(self.array))
+def spin_cycle(columns: tuple[str, ...]) -> tuple[str, ...]:
+    for _ in range(4):
+        columns = move_north(columns)
+        # rotate left because we are dealing with columns not rows
+        columns = rotate_matrix_left(columns)
+    return columns
 
-    def rotate_left(self) -> None:
-        self.array = np.transpose(self.array[::-1])
 
-    def move_north(self) -> None:
-        array = self.array
-        for j in range(array.shape[1]):
-            idx = 0
-            repl = []
-            for i in range(array.shape[0]):
-                if array[i][j] == "O":
-                    repl.append("O")
-                if array[i][j] == "#" or i == array.shape[0] - 1:
-                    if repl:
-                        for a in range(len(repl)):
-                            array[idx + a][j] = "O"
-                        for a in range(idx + len(repl), i + (1 if array[i][j] == "O" else 0)):
-                            array[a][j] = "."
-                    repl = []
-                    idx = i + 1
-
-    def spin_cycle(self) -> None:
-        # north
-        self.move_north()
-
-        # west
-        self.rotate_left()
-        self.move_north()
-
-        # south
-        self.rotate_left()
-        self.move_north()
-
-        # east
-        self.rotate_left()
-        self.move_north()
-
-        # back to straight up
-        self.rotate_left()
-
-    def points(self) -> int:
-        return sum([(idx + 1) * np.sum(row) for idx, row in enumerate(self.array[::-1] == "O")])
+def points(columns: tuple[str, ...]) -> int:
+    total = 0
+    height = len(columns[0])
+    for column in columns:
+        for value in range(height, 0, -1):
+            if column[height - value] == "O":
+                total += value
+    return total
 
 
 class Solution(Base):
     @classmethod
     def parse(cls, input_data: AoCInput) -> Any:
-        return Dish(np.array([list(line) for line in input_data.as_list_of_str]))
+        return tuple(input_data.as_columns)
 
     @classmethod
     def process_part_one(cls, parsed_input: Any, **kwargs: Any) -> int:
-        dish: Dish = parsed_input
-        dish.move_north()
-        return dish.points()
+        columns = parsed_input
+        columns = move_north(columns)
+        return points(columns)
 
     @classmethod
     def process_part_two(cls, parsed_input: Any, **kwargs: Any) -> int:
-        @dataclass
-        class Cache:
-            result: Any
-            spin_cycle: int
+        columns = parsed_input
 
-        max_spin_cycles_count = int(1e9)
+        cache: dict[tuple[str, ...], int] = {}
 
-        dish: Dish = parsed_input
-        cache: dict[int, Cache] = {}
+        max_cycle_count = int(1.0e9)
+        cycle_count = 0
+        while columns not in cache:
+            cache[columns] = cycle_count
+            columns = spin_cycle(columns)
+            cycle_count += 1
 
-        spin_cycles_count = 0
-        while (h := dish.hash) not in cache:
-            dish.spin_cycle()
-            cache[h] = Cache(spin_cycle=spin_cycles_count, result=dish.copy())
-            spin_cycles_count += 1
+        cycle_length = cycle_count - cache[columns]
+        cycle_count += ((max_cycle_count - cycle_count - 1) // cycle_length) * cycle_length
 
-        cycle_length = spin_cycles_count - cache[h].spin_cycle
-        spin_cycles_count += (
-            (max_spin_cycles_count - spin_cycles_count - 1) // cycle_length
-        ) * cycle_length
+        while cycle_count < max_cycle_count:
+            columns = spin_cycle(columns)
+            cycle_count += 1
 
-        while (spin_cycles_count := spin_cycles_count + 1) <= max_spin_cycles_count:
-            dish = cache[dish.hash].result
-
-        return dish.points()
+        return points(columns)

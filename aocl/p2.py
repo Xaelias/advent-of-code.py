@@ -72,3 +72,27 @@ def segments_cross(
         and y_seg[0] <= yy_seg[1]
         and yy_seg[0] <= y_seg[1]
     )
+
+
+def rotate_matrix_left(matrix):
+    outer_type = type(matrix)
+    inner_type = type(matrix[0])
+
+    zipped = zip(*matrix)
+
+    if isinstance(matrix[0], str):
+        zipped = map("".join, zipped)
+
+    return outer_type(map(inner_type, zipped))[::-1]
+
+
+def rotate_matrix_right(matrix):
+    outer_type = type(matrix)
+    inner_type = type(matrix[0])
+
+    zipped = zip(*matrix[::-1])
+
+    if isinstance(matrix[0], str):
+        zipped = map("".join, zipped)
+
+    return outer_type(map(inner_type, zipped))

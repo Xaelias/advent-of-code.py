@@ -45,7 +45,7 @@ Day       Time    Rank  Score       Time   Rank  Score
    1.23s   2023/11 - Cosmic Expansion                           alesieur/default   ✔ part a: 9681886                            ✔ part b: 791134099634
    0.91s   2023/12 - Hot Springs                                alesieur/default   ✔ part a: 7118                               ✔ part b: 7030194981795
    0.41s   2023/13 - Point of Incidence                         alesieur/default   ✔ part a: 37975                              ✔ part b: 32497
-   3.97s   2023/14 - Parabolic Reflector Dish                   alesieur/default   ✔ part a: 110779                             ✔ part b: 86069
+   0.74s   2023/14 - Parabolic Reflector Dish                   alesieur/default   ✔ part a: 110779                             ✔ part b: 86069
    0.40s   2023/15 - Lens Library                               alesieur/default   ✔ part a: 498538                             ✔ part b: 286278
    2.52s   2023/16 - The Floor Will Be Lava                     alesieur/default   ✔ part a: 7996                               ✔ part b: 8239
    2.51s   2023/17 - Clumsy Crucible                            alesieur/default   ✔ part a: 665                                ✔ part b: 809
@@ -57,5 +57,4 @@ Day       Time    Rank  Score       Time   Rank  Score
   13.61s   2023/23 - A Long Walk                                alesieur/default   ✔ part a: 2182                               ✔ part b: 6670
    0.93s   2023/24 - Never Tell Me The Odds                     alesieur/default   ✔ part a: 20336                              ✔ part b: 677656046662770
    2.79s   2023/25 - Snowverload                                alesieur/default   ✔ part a: 582590
->>> elapsed time 44s
 ```
