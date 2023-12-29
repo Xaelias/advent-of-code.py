@@ -117,31 +117,32 @@ class Solution(Base):
 
     @classmethod
     def process_part_one(cls, parsed_input: Any, **kwargs: Any) -> int:
-        from networkx import Graph
-        from networkx import connected_components
-        from networkx import minimum_edge_cut
-
-        g = Graph()
-
-        verts, edges = parsed_input
-        for vertex in verts:
-            g.add_node(vertex)
-        for edge in edges:
-            g.add_edge(*edge)
-
-        load_bearing_edges = minimum_edge_cut(g)
-        g.remove_edges_from(load_bearing_edges)
-        return math.prod(map(len, connected_components(g)))
-
-        # import igraph
-        # g = igraph.Graph()
+        # from networkx import Graph
+        # from networkx import connected_components
+        # from networkx import minimum_edge_cut
+        #
+        # g = Graph()
+        #
         # verts, edges = parsed_input
         # for vertex in verts:
-        #     g.add_vertex(vertex)
+        #     g.add_node(vertex)
         # for edge in edges:
         #     g.add_edge(*edge)
-        # groups = g.mincut()
-        # return math.prod(map(len, groups))
+        #
+        # load_bearing_edges = minimum_edge_cut(g)
+        # g.remove_edges_from(load_bearing_edges)
+        # return math.prod(map(len, connected_components(g)))
+
+        import igraph
+
+        g = igraph.Graph()
+        verts, edges = parsed_input
+        for vertex in verts:
+            g.add_vertex(vertex)
+        for edge in edges:
+            g.add_edge(*edge)
+        groups = g.mincut()
+        return math.prod(map(len, groups))
 
     @classmethod
     def process_part_two(cls, parsed_input: Any, **kwargs: Any) -> str:

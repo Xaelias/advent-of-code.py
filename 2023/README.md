@@ -56,5 +56,5 @@ Day       Time    Rank  Score       Time   Rank  Score
    0.94s   2023/22 - Sand Slabs                                 alesieur/default   ✔ part a: 403                                ✔ part b: 70189
   13.61s   2023/23 - A Long Walk                                alesieur/default   ✔ part a: 2182                               ✔ part b: 6670
    0.93s   2023/24 - Never Tell Me The Odds                     alesieur/default   ✔ part a: 20336                              ✔ part b: 677656046662770
-   2.79s   2023/25 - Snowverload                                alesieur/default   ✔ part a: 582590
+   1.03s   2023/25 - Snowverload                                alesieur/default   ✔ part a: 582590
 ```
