@@ -30,11 +30,11 @@ class AoCInput:
 
     @property
     def raw(self) -> str:
-        return self.input_data.strip()
+        return self.input_data.strip("\n")
 
     @property
     def as_chunks(self) -> list[list[str]]:
-        return [[line.strip() for line in chunk.split()] for chunk in self.raw.split("\n\n")]
+        return [chunk.split("\n") for chunk in self.raw.split("\n\n")]
 
     @property
     def as_list_of_str(self) -> list[str]:

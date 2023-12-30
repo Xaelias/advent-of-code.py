@@ -99,8 +99,8 @@ class Puzzle:
             _, *examples = re.split(pattern, local_test_input_data)
             for raw_example in examples:
                 split = raw_example.split("-" * 80)
-                input_data = split[0].strip()
-                parameters = split[1].strip()
+                input_data = split[0].strip("\n")
+                parameters = split[1].strip("\n")
                 parsed_parameters: dict[str, list[ProblemParameters]] = {"a": [], "b": []}
 
                 wip: dict[str, Any] = {}
