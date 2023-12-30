@@ -36,7 +36,10 @@ class Solution(Base):
             else:
                 size, _ = line.split()
                 file_sizes[current_dir] += int(size)
-        return {k: recursive_dir_size(file_sizes, subdirs, k) for k in file_sizes}
+        return {
+            k: recursive_dir_size(file_sizes, subdirs, k)
+            for k in set(file_sizes.keys()) | set(subdirs.keys())
+        }
 
     @classmethod
     def process_part_one(cls, parsed_input: Any, **kwargs: Any) -> int:
