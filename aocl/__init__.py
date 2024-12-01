@@ -143,7 +143,7 @@ def cli() -> None:
 
 
 def mysolve(year: int, day: int, data: str) -> None:
-    mod_name = "{}.day.{}.solution".format(year, day)
+    mod_name = f"{year}.day.{day}.solution".format(year, day)
     mod = importlib.import_module(mod_name)
     logger.remove()
     return mod.Solution(year=year, day=day, data=data).get_answers()

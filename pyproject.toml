@@ -4,6 +4,21 @@ description = "All my libraries for Advent of Code"
 
 requires-python = ">=3.12"
 dynamic = ["version"]
+dependencies = [
+    "aocd==0.1",
+    "gitpython==3.1.40",
+    "ipdb==0.13.13",
+    "loguru==0.7.2",
+    "networkx==3.2.1",
+    "numpy==1.26.2",
+    "pyfunctional==1.4.3",
+    "pytest==7.4.3",
+    "regex==2023.12.25",
+    "rich-argparse==1.4.0",
+    "ruff>=0.8.1",
+    "shapely==2.0.6",
+    "sympy==1.12",
+]
 
 [tool.setuptools.packages.find]
 where = ["."]
@@ -26,3 +41,6 @@ extend-select = [
 
 [tool.ruff.lint.isort]
 force-single-line= true
+
+[tool.uv]
+package = true
