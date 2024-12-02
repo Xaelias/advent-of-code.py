@@ -1,4 +1,4 @@
-from collections import defaultdict
+from collections import Counter
 from typing import Any
 
 from aocl.base import AoCInput
@@ -28,13 +28,8 @@ class Solution(Base):
     def process_part_two(cls, parsed_input: list[list[str]], **kwargs: Any) -> int:
         left = [int(s) for s in parsed_input[0]]
         right = [int(s) for s in parsed_input[1]]
-        left_count: dict[int, int] = defaultdict(int)
-        right_count: dict[int, int] = defaultdict(int)
-
-        for i in left:
-            left_count[i] += 1
-        for i in right:
-            right_count[i] += 1
+        left_count: dict[int, int] = Counter(left)
+        right_count: dict[int, int] = Counter(right)
 
         yd(left)
         yd(left_count)
