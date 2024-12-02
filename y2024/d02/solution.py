@@ -12,7 +12,10 @@ def abs_diff(input: tuple[str, str]) -> int:
 
 @yt(show_enter=False)
 def is_report_safe(
-    report: list[int], min_spread: int = 1, max_spread: int = 3, increasing: bool | None = None
+    report: list[int],
+    min_spread: int = 1,
+    max_spread: int = 3,
+    increasing: bool | None = None,
 ) -> bool:
     if len(report) <= 1:
         return True
@@ -56,4 +59,19 @@ class Solution(Base):
 
     @classmethod
     def process_part_two(cls, parsed_input: list[list[str]], **kwargs: Any) -> int:
-        return 0
+        yt(parsed_input)
+
+        total = 0
+        for report in parsed_input:
+            safe = is_report_safe(report=report)
+            if not safe:
+                for idx in range(len(report)):
+                    new_report = report[::]
+                    new_report.pop(idx)
+                    safe = is_report_safe(report=new_report)
+                    if safe:
+                        break
+
+            yd(report, safe)
+            total += safe
+        return total
