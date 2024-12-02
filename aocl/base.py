@@ -23,7 +23,10 @@ yd = y.new(
     output=logger.debug,
     show_line_number=True,
     sort_dicts=True,
+    enforce_line_length=False,
+    line_length=300,
 )
+yt = yd.clone(output=logger.trace)
 
 
 class AoCInput:
