@@ -11,11 +11,19 @@ import numpy as np
 from functional import seq
 from functional.pipeline import Sequence
 from loguru import logger
+from ycecream import y
 
 from aocl.parser import Puzzle
 
 with suppress(Exception):
     logger.level("FAILED", no=25, color="<red>")
+
+
+yd = y.new(
+    output=logger.debug,
+    show_line_number=True,
+    sort_dicts=True,
+)
 
 
 class AoCInput:

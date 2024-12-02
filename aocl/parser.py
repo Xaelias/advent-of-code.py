@@ -62,8 +62,8 @@ class Puzzle:
             return
 
         git_root = get_git_root()
-        self.test_input_file = f"{self.year}/day/{self.day}/test_input"
-        self.real_input_file = f"{self.year}/day/{self.day}/input"
+        self.test_input_file = f"y{self.year}/d{self.day:02}/test_input"
+        self.real_input_file = f"y{self.year}/d{self.day:02}/input"
 
         self.aoc_puzzle = AoCPuzzle(year=self.year, day=self.day)
 

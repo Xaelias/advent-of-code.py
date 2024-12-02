@@ -110,7 +110,8 @@ def cli() -> None:
     logger.remove()
     logger.add(sys.stderr, level=args.llevel)
 
-    mod_name = "{}.day.{}.solution".format(args.year, args.day)
+    # mod_name = "{}.day.{}.solution".format(args.year, args.day)
+    mod_name = f"y{args.year}.d{args.day:02}.solution"
     mod = importlib.import_module(mod_name)
     logger.trace(mod.__file__)
 

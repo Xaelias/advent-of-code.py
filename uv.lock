@@ -22,7 +22,9 @@ name = "advent-of-code-libraries"
 version = "0.0.0"
 source = { editable = "." }
 dependencies = [
+    { name = "advent-of-code-data" },
     { name = "aocd" },
+    { name = "aocd-example-parser" },
     { name = "gitpython" },
     { name = "ipdb" },
     { name = "loguru" },
@@ -35,11 +37,14 @@ dependencies = [
     { name = "ruff" },
     { name = "shapely" },
     { name = "sympy" },
+    { name = "ycecream" },
 ]
 
 [package.metadata]
 requires-dist = [
+    { name = "advent-of-code-data", specifier = ">=2.0.4" },
     { name = "aocd", specifier = "==0.1" },
+    { name = "aocd-example-parser", specifier = ">=2023.12.20" },
     { name = "gitpython", specifier = "==3.1.40" },
     { name = "ipdb", specifier = "==0.13.13" },
     { name = "loguru", specifier = "==0.7.2" },
@@ -52,6 +57,7 @@ requires-dist = [
     { name = "ruff", specifier = ">=0.8.1" },
     { name = "shapely", specifier = "==2.0.6" },
     { name = "sympy", specifier = "==1.12" },
+    { name = "ycecream", specifier = ">=1.3.20.post0" },
 ]
 
 [[package]]
@@ -597,3 +603,9 @@ sdist = { url = "https://files.pythonhosted.org/packages/6b/dd/f95a13d2b235a28d6
 wheels = [
     { url = "https://files.pythonhosted.org/packages/0a/e6/a7d828fef907843b2a5773ebff47fb79ac0c1c88d60c0ca9530ee941e248/win32_setctime-1.1.0-py3-none-any.whl", hash = "sha256:231db239e959c2fe7eb1d7dc129f11172354f98361c4fa2d6d2d7e278baa8aad", size = 3604 },
 ]
+
+[[package]]
+name = "ycecream"
+version = "1.3.20.post0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/2f/51/8a561e37b22b582ed0e5ad9902379503abbbbd4e4ea43ec4fd3f4c73bb50/ycecream-1.3.20.post0.tar.gz", hash = "sha256:17e065f5e6bed4d210e50a9a296a15459784ef77c5b11ab4f1818ccdb7b56380", size = 99578 }
