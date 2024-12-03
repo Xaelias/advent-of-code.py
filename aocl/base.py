@@ -1,3 +1,4 @@
+import os
 from abc import ABC
 from abc import abstractmethod
 from collections.abc import Iterator
@@ -11,7 +12,7 @@ import numpy as np
 from functional import seq
 from functional.pipeline import Sequence
 from loguru import logger
-from ycecream import y
+from peek import peek
 
 from aocl.parser import Puzzle
 
@@ -19,14 +20,14 @@ with suppress(Exception):
     logger.level("FAILED", no=25, color="<red>")
 
 
-yd = y.new(
+yd = peek.new(
     output=logger.debug,
     show_line_number=True,
     sort_dicts=True,
-    enforce_line_length=False,
     line_length=300,
+    enabled=os.environ.get("LOGURU_LEVEL") in ("TRACE", "DEBUG"),
 )
-yt = yd.clone(output=logger.trace)
+yt = yd.clone(output=logger.trace, enabled=os.environ.get("LOGURU_LEVEL") == "TRACE")
 
 
 class AoCInput:

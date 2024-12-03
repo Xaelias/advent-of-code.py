@@ -109,6 +109,7 @@ def cli() -> None:
     args = parser.parse_args()
     logger.remove()
     logger.add(sys.stderr, level=args.llevel)
+    os.environ["LOGURU_LEVEL"] = args.llevel
 
     # mod_name = "{}.day.{}.solution".format(args.year, args.day)
     mod_name = f"y{args.year}.d{args.day:02}.solution"

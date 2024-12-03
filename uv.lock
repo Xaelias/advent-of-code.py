@@ -30,6 +30,7 @@ dependencies = [
     { name = "loguru" },
     { name = "networkx" },
     { name = "numpy" },
+    { name = "peek-python" },
     { name = "pyfunctional" },
     { name = "pytest" },
     { name = "regex" },
@@ -37,7 +38,6 @@ dependencies = [
     { name = "ruff" },
     { name = "shapely" },
     { name = "sympy" },
-    { name = "ycecream" },
 ]
 
 [package.metadata]
@@ -50,6 +50,7 @@ requires-dist = [
     { name = "loguru", specifier = "==0.7.2" },
     { name = "networkx", specifier = "==3.2.1" },
     { name = "numpy", specifier = "==1.26.2" },
+    { name = "peek-python", specifier = ">=1.6.2" },
     { name = "pyfunctional", specifier = "==1.4.3" },
     { name = "pytest", specifier = "==7.4.3" },
     { name = "regex", specifier = "==2023.12.25" },
@@ -57,7 +58,6 @@ requires-dist = [
     { name = "ruff", specifier = ">=0.8.1" },
     { name = "shapely", specifier = "==2.0.6" },
     { name = "sympy", specifier = "==1.12" },
-    { name = "ycecream", specifier = ">=1.3.20.post0" },
 ]
 
 [[package]]
@@ -320,6 +320,15 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/c6/b2/a83f1d951977e6392efdb21f4a901a3fd920b992450de9a464e59241d2ed/Pebble-5.1.0.tar.gz", hash = "sha256:5c30376f1827b21ecec4126ff90e7f22ad5501cac1ff2b32c86ff2601681f932", size = 35060 }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/31/69/0fa75151350a9d7b848bfde929673ad505346940ae2713f862647394f0f7/Pebble-5.1.0-py3-none-any.whl", hash = "sha256:530a398299ecd3a4ed1baf2e4b8045d8280b1e665560b0b409f8d8e58db60111", size = 36177 },
+]
+
+[[package]]
+name = "peek-python"
+version = "1.6.2"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/fe/4d/6c3d2035e25cd73ebf23efcdd9ad9e5eeca04e45091fcb469f0294ef7e94/peek_python-1.6.2.tar.gz", hash = "sha256:3aa214f45de4ed51278b2b7636dacfb66a67df3ea8483a9f806308f68f9912ae", size = 111647 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/84/dc/8cada2555a2836e8d76c4f9fce9e7b7acc4151b93a9c95518bfe3522b524/peek_python-1.6.2-py3-none-any.whl", hash = "sha256:7cbaa593f442c5f14d146fc8839e4c557e300b3eb14665e17b1f780b8245a7c0", size = 85835 },
 ]
 
 [[package]]
@@ -603,9 +612,3 @@ sdist = { url = "https://files.pythonhosted.org/packages/6b/dd/f95a13d2b235a28d6
 wheels = [
     { url = "https://files.pythonhosted.org/packages/0a/e6/a7d828fef907843b2a5773ebff47fb79ac0c1c88d60c0ca9530ee941e248/win32_setctime-1.1.0-py3-none-any.whl", hash = "sha256:231db239e959c2fe7eb1d7dc129f11172354f98361c4fa2d6d2d7e278baa8aad", size = 3604 },
 ]
-
-[[package]]
-name = "ycecream"
-version = "1.3.20.post0"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/2f/51/8a561e37b22b582ed0e5ad9902379503abbbbd4e4ea43ec4fd3f4c73bb50/ycecream-1.3.20.post0.tar.gz", hash = "sha256:17e065f5e6bed4d210e50a9a296a15459784ef77c5b11ab4f1818ccdb7b56380", size = 99578 }
