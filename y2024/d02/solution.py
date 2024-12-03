@@ -1,3 +1,4 @@
+from functools import cache
 from typing import Any
 
 from aocl.base import AoCInput
@@ -10,27 +11,39 @@ def abs_diff(input: tuple[str, str]) -> int:
     return abs(int(input[1]) - int(input[0]))
 
 
+@cache
+def is_step_safe(
+    first: int,
+    second: int,
+    increasing: bool,
+    min_spread: int = 1,
+    max_spread: int = 3,
+) -> bool:
+    if increasing is (second < first):
+        yt(first, second, increasing)
+        return False
+    if not (min_spread <= abs(first - second) <= max_spread):
+        yt(first, second, min_spread, max_spread)
+        return False
+    return True
+
+
 @yt(show_enter=False)
 def is_report_safe(
     report: list[int],
+    increasing: bool | None = None,
     min_spread: int = 1,
     max_spread: int = 3,
-    increasing: bool | None = None,
 ) -> bool:
     if len(report) <= 1:
         return True
 
     first, *remainder = report
-
     if increasing is None:
         increasing = first <= remainder[0]
 
     second = remainder[0]
-    if (increasing and second < first) or (not increasing and first < second):
-        yt(first, second, increasing)
-        return False
-    if not (min_spread <= abs(first - second) <= max_spread):
-        yt(first, second, min_spread, max_spread)
+    if not is_step_safe(first, second, increasing):
         return False
 
     return is_report_safe(
