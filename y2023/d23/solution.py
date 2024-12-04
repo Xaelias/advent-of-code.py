@@ -9,8 +9,8 @@ import numpy as np
 from aocl import p2
 from aocl.base import AoCInput
 from aocl.base import Base
-from aocl.p2 import in_shape
 from aocl.p2 import P2
+from aocl.p2 import in_shape
 
 
 def longest_path(
