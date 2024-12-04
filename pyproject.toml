@@ -5,8 +5,8 @@ description = "All my libraries for Advent of Code"
 requires-python = ">=3.12"
 dynamic = ["version"]
 dependencies = [
-    "advent-of-code-data>=2.0.4",
-    "aocd-example-parser>=2023.12.20",
+    "advent-of-code-data",
+    "aocd-example-parser",
     "aocd==0.1",
     "gitpython==3.1.40",
     "ipdb==0.13.13",
