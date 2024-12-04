@@ -24,7 +24,7 @@ yd = peek.new(
     output=logger.debug,
     show_line_number=True,
     sort_dicts=True,
-    line_length=300,
+    line_length=1000,
     enabled=os.environ.get("LOGURU_LEVEL") in ("TRACE", "DEBUG"),
 )
 yt = yd.clone(output=logger.trace, enabled=os.environ.get("LOGURU_LEVEL") == "TRACE")
