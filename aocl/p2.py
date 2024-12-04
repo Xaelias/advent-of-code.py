@@ -1,6 +1,6 @@
+from collections.abc import Callable
+from collections.abc import Iterable
 from functools import cache
-from typing import Iterable
-from typing import Optional
 
 RULD = [(0, 1), (-1, 0), (0, -1), (1, 0)]
 
@@ -16,7 +16,7 @@ def in_shape(position: P2, shape: Shape) -> bool:
     return 0 <= position[0] < shape[0] and 0 <= position[1] < shape[1]
 
 
-def adj(position: P2, shape: Optional[Shape]) -> Iterable[P2]:
+def adj(position: P2, shape: Shape | None) -> Iterable[P2]:
     neighbors = [
         (position[0], position[1] + 1),  # R
         (position[0] + 1, position[1]),  # D
@@ -32,21 +32,77 @@ def right(position: P2) -> P2:
     return position[0], position[1] + 1
 
 
+def up_right(position: P2) -> P2:
+    return position[0] - 1, position[1] + 1
+
+
 def up(position: P2) -> P2:
     return position[0] - 1, position[1]
+
+
+def up_left(position: P2) -> P2:
+    return position[0] - 1, position[1] - 1
 
 
 def left(position: P2) -> P2:
     return position[0], position[1] - 1
 
 
+def down_left(position: P2) -> P2:
+    return position[0] + 1, position[1] - 1
+
+
 def down(position: P2) -> P2:
     return position[0] + 1, position[1]
+
+
+def down_right(position: P2) -> P2:
+    return position[0] + 1, position[1] + 1
+
+
+all_eight_directions_functions = [
+    right,
+    up_right,
+    up,
+    up_left,
+    left,
+    down_left,
+    down,
+    down_right,
+]
+
+all_four_directions_functions = [
+    right,
+    up,
+    left,
+    down,
+]
 
 
 def go_direction(position: P2, direction: str, times: int):
     offset = RULD["RULD".index(direction)]
     return position[0] + times * offset[0], position[1] + times * offset[1]
+
+
+def get_points_in_direction(
+    nparray,
+    start: P2,
+    direction: Callable[[P2], P2],
+    count: int,
+    stay_in_shape: bool = True,
+) -> str:
+    result = []
+    shape = nparray.shape
+    pos = start
+    if in_shape(pos, shape) or not stay_in_shape:
+        result.append(nparray[pos])
+        for _ in range(count - 1):
+            pos = direction(pos)
+            if in_shape(pos, shape) or not stay_in_shape:
+                result.append(nparray[pos])
+            else:
+                break
+    return "".join(result)
 
 
 @cache
