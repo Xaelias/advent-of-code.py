@@ -23,7 +23,7 @@ Day       Time    Rank  Score       Time   Rank  Score
   8   00:00:00       -      0   00:00:00      -      0
   7   00:00:00       -      0   00:00:00      -      0
   6   00:00:00       -      0   00:00:00      -      0
-  5   00:00:00       -      0   00:00:00      -      0
+  5   17:09:08   64864      0   17:31:14  55271      0
   4   15:47:34   68663      0   15:54:15  60827      0
   3   17:08:48   92390      0   19:10:08  85162      0
   2   16:18:21   98575      0   18:17:59  80340      0
@@ -48,4 +48,8 @@ Day       Time    Rank  Score       Time   Rank  Score
    0.41s   2024/4  - Ceres Search                               alesieur/account_x   ✔ part a: 2493                               ✔ part b: 1890
    0.42s   2024/4  - Ceres Search                               alesieur/account_m   ✔ part a: 2378                               ✔ part b: 1796
    0.41s   2024/4  - Ceres Search                               alesieur/account_r   ✔ part a: 2517                               ✔ part b: 1960
+   0.42s   2024/5  - Print Queue                                alesieur/account_g   ✔ part a: 5248                               ✔ part b: 4507
+   0.31s   2024/5  - Print Queue                                alesieur/account_x   ✔ part a: 5374                               ✔ part b: 4260
+   0.31s   2024/5  - Print Queue                                alesieur/account_m   ✔ part a: 4662                               ✔ part b: 5900
+   0.31s   2024/5  - Print Queue                                alesieur/account_r   ✔ part a: 4609                               ✔ part b: 5723
 ```

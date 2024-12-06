@@ -44,7 +44,7 @@ class Solution(Base):
         return input_data.as_nparray
 
     @classmethod
-    def process_part_one(cls, parsed_input: list[list[str]], **kwargs: Any) -> int:
+    def process_part_one(cls, parsed_input: NDArray, **kwargs: Any) -> int:
         exes = zip(*np.where(parsed_input == "X"))
         return (
             seq(exes)
@@ -54,7 +54,7 @@ class Solution(Base):
         )
 
     @classmethod
-    def process_part_two(cls, parsed_input: list[list[str]], **kwargs: Any) -> int:
+    def process_part_two(cls, parsed_input: NDArray, **kwargs: Any) -> int:
         aces = zip(*np.where(parsed_input == "A"))
         return seq(aces).map(lambda a_pos: is_x_mas(parsed_input, a_pos)).sum()
 
