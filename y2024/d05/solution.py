@@ -42,6 +42,7 @@ class Solution(Base):
         **kwargs: Any,
     ) -> int:
         rules, updates = parsed_input
+
         return (
             seq(updates)
             .filter_not(
@@ -83,3 +84,15 @@ class Solution(Base):
             .map(pop_middle)
             .sum()
         )
+
+        # list comprehension
+        # return sum(
+        #     [
+        #         pop_middle(a)
+        #         for a, b in zip(
+        #             [sorted(map(Page, update)) for update in updates],
+        #             updates,
+        #         )
+        #         if a != b
+        #     ]
+        # )
