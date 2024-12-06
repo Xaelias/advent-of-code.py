@@ -64,7 +64,7 @@ class Solution(Base):
     ) -> int:
         rules, updates = parsed_input
 
-        class Int(int):
+        class Page(int):
             # `sorted` only uses __lt__, which means that's the only operator we need to override
             # return True if self < other
             def __lt__(self, other) -> bool:
@@ -72,8 +72,8 @@ class Solution(Base):
 
         return (
             seq(updates)
-            # deep conversion to Int so that I can sort
-            .map(lambda update: map(Int, update))
+            # deep conversion to Page so that I can sort
+            .map(lambda update: map(Page, update))
             .map(sorted)
             # convert to tuples because `.difference` uses sets under the hood
             # and lists are not hashable
