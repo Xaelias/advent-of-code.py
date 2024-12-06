@@ -22,10 +22,11 @@ from aocl.base import Base
 
 
 type Rules = dict[int, list[int]]
-type Updates = list[list[int]]
+type Update = Sequence[int]
+type Updates = list[Update]
 
 
-def pop_middle(update: Sequence[int]) -> int:
+def pop_middle(update: Update) -> int:
     return update[len(update) // 2]
 
 
