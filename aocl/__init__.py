@@ -7,8 +7,8 @@ import re
 import sys
 from contextlib import suppress
 from datetime import datetime
-from datetime import timezone
 from typing import Any
+from zoneinfo import ZoneInfo
 
 from ipdb import launch_ipdb_on_exception
 from loguru import logger
@@ -46,8 +46,9 @@ def cli() -> None:
         yyyy = match.group(1)
         dd = match.group(2)
     else:
-        yyyy = datetime.now(timezone.utc).year
-        dd = datetime.now(timezone.utc).day
+        now_in_nyc = datetime.now(tz=ZoneInfo("America/New_York"))
+        yyyy = now_in_nyc.year
+        dd = now_in_nyc.day
 
     parser.add_argument("-h", "--help", action="help", help=argparse.SUPPRESS)
 
