@@ -21,13 +21,17 @@ from aocl.base import Base
 #     # sorted([], key=cmp_to_key(rules_cmp))
 
 
+type Rules = dict[int, list[int]]
+type Updates = list[list[int]]
+
+
 def pop_middle(update: Sequence[int]) -> int:
     return update[len(update) // 2]
 
 
 class Solution(Base):
     @classmethod
-    def parse(cls, input_data: AoCInput) -> tuple[dict[int, list[int]], list[list[int]]]:
+    def parse(cls, input_data: AoCInput) -> tuple[Rules, Updates]:
         rules_raw, updates_raw = input_data.as_chunks
 
         rules = defaultdict(list)
@@ -39,7 +43,7 @@ class Solution(Base):
     @classmethod
     def process_part_one(
         cls,
-        parsed_input: tuple[dict[int, list[list[int]]], list[int]],
+        parsed_input: tuple[Rules, Updates],
         **kwargs: Any,
     ) -> int:
         rules, updates = parsed_input
@@ -61,7 +65,7 @@ class Solution(Base):
     @classmethod
     def process_part_two(
         cls,
-        parsed_input: tuple[dict[int, list[int]], list[int]],
+        parsed_input: tuple[Rules, Updates],
         **kwargs: Any,
     ) -> int:
         rules, updates = parsed_input
