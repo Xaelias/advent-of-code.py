@@ -1,5 +1,6 @@
 from collections import defaultdict
 from collections.abc import Sequence
+from operator import itemgetter
 from typing import Any
 
 from functional import seq
@@ -76,11 +77,10 @@ class Solution(Base):
             # deep conversion to Page so that I can sort
             .map(lambda update: map(Page, update))
             .map(sorted)
-            # convert to tuples because `.difference` uses sets under the hood
-            # and lists are not hashable
-            .map(tuple)
-            # only keep updates that are different once sorted, i.e. the ones we fixed
-            .difference(seq(updates).map(tuple))
+            # technically more accurate
+            .zip(updates)
+            .filter(lambda pair: pair[0] != pair[1])
+            .map(itemgetter(0))
             .map(pop_middle)
             .sum()
         )
