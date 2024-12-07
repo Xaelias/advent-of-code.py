@@ -21,7 +21,7 @@ Day       Time    Rank  Score       Time   Rank  Score
  10   00:00:00       -      0   00:00:00      -      0
   9   00:00:00       -      0   00:00:00      -      0
   8   00:00:00       -      0   00:00:00      -      0
-  7   00:00:00       -      0   00:00:00      -      0
+  7   10:18:58   35194      0   10:26:14  32339      0
   6   09:16:06   41303      0   12:20:11  29711      0
   5   17:09:08   64864      0   17:31:14  55271      0
   4   15:47:34   68663      0   15:54:15  60827      0
@@ -56,4 +56,8 @@ Day       Time    Rank  Score       Time   Rank  Score
    1.89s   2024/6  - Guard Gallivant                            alesieur/account_x   ✔ part a: 4758                               ✔ part b: 1670
    1.99s   2024/6  - Guard Gallivant                            alesieur/account_m   ✔ part a: 4647                               ✔ part b: 1723
    2.20s   2024/6  - Guard Gallivant                            alesieur/account_r   ✔ part a: 5153                               ✔ part b: 1711
+   1.58s   2024/7  - Bridge Repair                              alesieur/account_g   ✔ part a: 2314935962622                      ✔ part b: 401477450831495
+   1.54s   2024/7  - Bridge Repair                              alesieur/account_x   ✔ part a: 1038838357795                      ✔ part b: 254136560217241
+   1.66s   2024/7  - Bridge Repair                              alesieur/account_m   ✔ part a: 1708857123053                      ✔ part b: 189207836795655
+   1.16s   2024/7  - Bridge Repair                              alesieur/account_r   ✔ part a: 2941973819040                      ✔ part b: 249943041417600
 ```
