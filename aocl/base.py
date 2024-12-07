@@ -1,3 +1,4 @@
+import math
 import os
 from abc import ABC
 from abc import abstractmethod
@@ -126,8 +127,7 @@ class Base(ABC):
 
     @classmethod
     @abstractmethod
-    def parse(cls, input_data: AoCInput) -> Any:
-        ...
+    def parse(cls, input_data: AoCInput) -> Any: ...
 
     @classmethod
     def parse_part_two(cls, input_data: AoCInput) -> Any:
@@ -135,8 +135,7 @@ class Base(ABC):
 
     @classmethod
     @abstractmethod
-    def process_part_one(cls, parsed_input: Any, **kwargs: Any) -> int | str:
-        ...
+    def process_part_one(cls, parsed_input: Any, **kwargs: Any) -> int | str: ...
 
     @classmethod
     def process_part_two(cls, parsed_input: Any, **kwargs: Any) -> int | str:
@@ -254,3 +253,9 @@ class Base(ABC):
         except Exception as e:
             answer_b = repr(e)
         return answer_a, answer_b
+
+
+def sign(a: int, b: int) -> int:
+    if a == b:
+        return 0
+    return int(math.copysign(1, b - a))

@@ -22,7 +22,7 @@ Day       Time    Rank  Score       Time   Rank  Score
   9   00:00:00       -      0   00:00:00      -      0
   8   00:00:00       -      0   00:00:00      -      0
   7   00:00:00       -      0   00:00:00      -      0
-  6   00:00:00       -      0   00:00:00      -      0
+  6   09:16:06   41303      0   12:20:11  29711      0
   5   17:09:08   64864      0   17:31:14  55271      0
   4   15:47:34   68663      0   15:54:15  60827      0
   3   17:08:48   92390      0   19:10:08  85162      0
@@ -52,4 +52,8 @@ Day       Time    Rank  Score       Time   Rank  Score
    0.31s   2024/5  - Print Queue                                alesieur/account_x   ✔ part a: 5374                               ✔ part b: 4260
    0.31s   2024/5  - Print Queue                                alesieur/account_m   ✔ part a: 4662                               ✔ part b: 5900
    0.31s   2024/5  - Print Queue                                alesieur/account_r   ✔ part a: 4609                               ✔ part b: 5723
+   2.04s   2024/6  - Guard Gallivant                            alesieur/account_g   ✔ part a: 4776                               ✔ part b: 1586
+   1.89s   2024/6  - Guard Gallivant                            alesieur/account_x   ✔ part a: 4758                               ✔ part b: 1670
+   1.99s   2024/6  - Guard Gallivant                            alesieur/account_m   ✔ part a: 4647                               ✔ part b: 1723
+   2.20s   2024/6  - Guard Gallivant                            alesieur/account_r   ✔ part a: 5153                               ✔ part b: 1711
 ```

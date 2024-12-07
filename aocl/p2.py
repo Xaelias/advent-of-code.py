@@ -4,12 +4,14 @@ from functools import cache
 
 RULD = [(0, 1), (-1, 0), (0, -1), (1, 0)]
 
-P2 = tuple[int, int]
-Matrix = list[list[int | str | bool]]
-StrMatrix = list[list[str]]
-IntMatrix = list[list[int]]
-BoolMatrix = list[list[bool]]
-Shape = tuple[int, int]
+type X = int
+type Y = int
+type P2 = tuple[X, Y]
+type Matrix = list[list[int | str | bool]]
+type StrMatrix = list[list[str]]
+type IntMatrix = list[list[int]]
+type BoolMatrix = list[list[bool]]
+type Shape = tuple[int, int]
 
 
 def in_shape(position: P2, shape: Shape) -> bool:
