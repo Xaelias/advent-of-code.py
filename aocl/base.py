@@ -67,7 +67,7 @@ class AoCInput:
 
     @property
     def as_nparray(self):
-        return np.array([list(row.strip()) for row in self.as_list_of_str])
+        return np.array([list(row.strip()) for row in self.as_list_of_str], np.object_)
 
     @property
     def as_list_of_nparray(self):

@@ -2,6 +2,9 @@ from collections.abc import Callable
 from collections.abc import Iterable
 from functools import cache
 
+import numpy as np
+from numpy.typing import NDArray
+
 RULD = [(0, 1), (-1, 0), (0, -1), (1, 0)]
 
 type X = int
@@ -154,3 +157,7 @@ def rotate_matrix_right(matrix):
         zipped = map("".join, zipped)
 
     return outer_type(map(inner_type, zipped))
+
+
+def where_in_ndarray(ndarray: NDArray, match: int | str) -> list[P2]:
+    return [(int(pair[0]), int(pair[1])) for pair in zip(*np.where(ndarray == match))]
