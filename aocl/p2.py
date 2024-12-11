@@ -1,6 +1,6 @@
-from collections.abc import Callable
 from functools import cache
 from typing import Any
+from typing import TypeVar
 
 import numpy as np
 import numpy.lib.mixins
@@ -8,12 +8,13 @@ import numpy.typing as npt
 
 RULD = [(0, 1), (-1, 0), (0, -1), (1, 0)]
 
-type Matrix = list[list[Any]]
-type StrMatrix = list[list[str]]
-type IntMatrix = list[list[int]]
-type BoolMatrix = list[list[bool]]
-type Shape = tuple[int, ...]
-type P2 = tuple[int, int]
+U = TypeVar("U")
+Matrix = list[list[U]]
+StrMatrix = list[list[str]]
+IntMatrix = list[list[int]]
+BoolMatrix = list[list[bool]]
+Shape = tuple[int, ...]
+P2 = tuple[int, int]
 
 
 def add(left: P2, right: P2) -> P2:
@@ -107,27 +108,6 @@ all_four_directions_functions = [
 ]
 
 
-def get_points_in_direction(
-    nparray: npt.NDArray,
-    start: P2,
-    direction: Callable[[P2], P2],
-    count: int,
-    stay_in_shape: bool = True,
-) -> str:
-    result = []
-    shape = nparray.shape
-    pos = start
-    if in_shape(pos, shape) or not stay_in_shape:
-        result.append(nparray[*pos])
-        for _ in range(count - 1):
-            pos = direction(pos)
-            if in_shape(pos, shape) or not stay_in_shape:
-                result.append(nparray[*pos])
-            else:
-                break
-    return "".join(result)
-
-
 @cache
 def segments_cross(
     x1: int,
@@ -181,10 +161,14 @@ def where_in_ndarray(ndarray: npt.NDArray, match: Any) -> list[P2]:
     return list(zip(*np.where(ndarray == match)))
 
 
-def where_in_matrix(matrix: Matrix, match: Any) -> list[P2]:
+def where_in_matrix(matrix: Matrix, match: U) -> list[P2]:
     rows, cols = shape(matrix)
     return [(i, j) for i in range(rows) for j in range(cols) if matrix[i][j] == match]
 
 
 def shape(matrix: Matrix) -> Shape:
     return (len(matrix), len(matrix[0]))
+
+
+def matrix_get[U](matrix: list[list[U]], pos: P2) -> U:
+    return matrix[pos[0]][pos[1]]
