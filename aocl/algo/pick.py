@@ -1,7 +1,13 @@
 from shapely.geometry import Polygon
 
 from aocl.p2 import P2
-from aocl.p2 import go_direction
+
+RULD = [(0, 1), (-1, 0), (0, -1), (1, 0)]
+
+
+def go_direction(position: P2, direction: str, times: int):
+    offset = RULD["RULD".index(direction)]
+    return position[0] + times * offset[0], position[1] + times * offset[1]
 
 
 class Pick:
@@ -19,7 +25,6 @@ class Pick:
         pos = (0, 0)
         coordinates = [pos]
         for direction, distance in dir_dist:
-            # pos = pos.go_direction(direction, times=distance)
             pos = go_direction(pos, direction, distance)
             coordinates.append(pos)
         return cls.area_from_positions_list(coordinates)

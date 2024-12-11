@@ -1,36 +1,27 @@
 from collections.abc import Callable
-from collections.abc import Iterable
 from functools import cache
+from typing import Any
 
 import numpy as np
-from numpy.typing import NDArray
+import numpy.lib.mixins
+import numpy.typing as npt
 
 RULD = [(0, 1), (-1, 0), (0, -1), (1, 0)]
 
-type X = int
-type Y = int
-type P2 = tuple[X, Y]
-type Matrix = list[list[int | str | bool]]
-type StrMatrix = list[list[str]]
-type IntMatrix = list[list[int]]
-type BoolMatrix = list[list[bool]]
-type Shape = tuple[int, int]
+type Shape = tuple[int, ...]
+type P2 = tuple[int, int]
+
+
+def add(left: P2, right: P2) -> P2:
+    return (left[0] + right[0], left[1] + right[1])
+
+
+def sub(left: P2, right: P2) -> P2:
+    return (left[0] - right[0], left[1] - right[1])
 
 
 def in_shape(position: P2, shape: Shape) -> bool:
     return 0 <= position[0] < shape[0] and 0 <= position[1] < shape[1]
-
-
-def adj(position: P2, shape: Shape | None) -> Iterable[P2]:
-    neighbors = [
-        (position[0], position[1] + 1),  # R
-        (position[0] + 1, position[1]),  # D
-        (position[0], position[1] - 1),  # L
-        (position[0] - 1, position[1]),  # U
-    ]
-    if shape is None:
-        return neighbors
-    return [e for e in neighbors if in_shape(e, shape)]
 
 
 def right(position: P2) -> P2:
@@ -65,32 +56,55 @@ def down_right(position: P2) -> P2:
     return position[0] + 1, position[1] + 1
 
 
+def neighbors(position: P2, shape: Shape | None = None) -> list[P2]:
+    neighbors = [
+        (position[0], position[1] + 1),  # R
+        (position[0] + 1, position[1]),  # D
+        (position[0], position[1] - 1),  # L
+        (position[0] - 1, position[1]),  # U
+    ]
+    if shape is None:
+        return neighbors
+    return [e for e in neighbors if in_shape(e, shape)]
+
+
+def all_neighbors(position: P2, shape: Shape | None = None) -> list[P2]:
+    neighbors = [
+        (position[0], position[1] + 1),  # R
+        (position[0] + 1, position[1] + 1),  # DR
+        (position[0] + 1, position[1]),  # D
+        (position[0] + 1, position[1] - 1),  # DL
+        (position[0], position[1] - 1),  # L
+        (position[0] - 1, position[1] - 1),  # UL
+        (position[0] - 1, position[1]),  # U
+        (position[0] - 1, position[1] + 1),  # UR
+    ]
+    if shape is None:
+        return neighbors
+    return [e for e in neighbors if in_shape(e, shape)]
+
+
 all_eight_directions_functions = [
     right,
-    up_right,
-    up,
-    up_left,
-    left,
-    down_left,
-    down,
     down_right,
+    down,
+    down_left,
+    left,
+    up_left,
+    up,
+    up_right,
 ]
 
 all_four_directions_functions = [
     right,
-    up,
-    left,
     down,
+    left,
+    up,
 ]
 
 
-def go_direction(position: P2, direction: str, times: int):
-    offset = RULD["RULD".index(direction)]
-    return position[0] + times * offset[0], position[1] + times * offset[1]
-
-
 def get_points_in_direction(
-    nparray,
+    nparray: npt.NDArray,
     start: P2,
     direction: Callable[[P2], P2],
     count: int,
@@ -100,11 +114,11 @@ def get_points_in_direction(
     shape = nparray.shape
     pos = start
     if in_shape(pos, shape) or not stay_in_shape:
-        result.append(nparray[pos])
+        result.append(nparray[*pos])
         for _ in range(count - 1):
             pos = direction(pos)
             if in_shape(pos, shape) or not stay_in_shape:
-                result.append(nparray[pos])
+                result.append(nparray[*pos])
             else:
                 break
     return "".join(result)
@@ -159,5 +173,5 @@ def rotate_matrix_right(matrix):
     return outer_type(map(inner_type, zipped))
 
 
-def where_in_ndarray(ndarray: NDArray, match: int | str) -> list[P2]:
-    return [(int(pair[0]), int(pair[1])) for pair in zip(*np.where(ndarray == match))]
+def where_in_ndarray(ndarray: npt.NDArray, match: Any) -> list[P2]:
+    return list(zip(*np.where(ndarray == match)))

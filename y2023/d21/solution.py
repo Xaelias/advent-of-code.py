@@ -2,22 +2,21 @@ import os
 from typing import Any
 from typing import Optional
 
-from aocl import p2
 from aocl.base import AoCInput
 from aocl.base import Base
 from aocl.linalg import quadratic_solve
 from aocl.p2 import P2
-from aocl.p2 import StrMatrix
+from aocl.p2 import neighbors
 
 
 def advance_n_steps(
-    matrix: StrMatrix, occupied: set[P2], steps: int, enforce_boundaries: bool = True
+    matrix: list[list[str]], occupied: set[P2], steps: int, enforce_boundaries: bool = True
 ) -> set[P2]:
     boundaries = (len(matrix), len(matrix[0]))
     for i in range(steps):
         new_occupied = set()
         for position in occupied:
-            for candidate in p2.adj(position, boundaries if enforce_boundaries else None):
+            for candidate in neighbors(position, boundaries if enforce_boundaries else None):
                 xx, yy = candidate
                 if matrix[xx % boundaries[0]][yy % boundaries[1]] == "#":
                     continue

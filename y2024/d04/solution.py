@@ -1,7 +1,6 @@
 from typing import Any
 from typing import Callable
 
-import numpy as np
 from functional import seq
 from numpy.typing import NDArray
 
@@ -45,7 +44,7 @@ class Solution(Base):
 
     @classmethod
     def process_part_one(cls, parsed_input: NDArray, **kwargs: Any) -> int:
-        exes = zip(*np.where(parsed_input == "X"))
+        exes = p2.where_in_ndarray(parsed_input, "X")
         return (
             seq(exes)
             .cartesian(p2.all_eight_directions_functions)
@@ -55,7 +54,7 @@ class Solution(Base):
 
     @classmethod
     def process_part_two(cls, parsed_input: NDArray, **kwargs: Any) -> int:
-        aces = zip(*np.where(parsed_input == "A"))
+        aces = p2.where_in_ndarray(parsed_input, "A")
         return seq(aces).map(lambda a_pos: is_x_mas(parsed_input, a_pos)).sum()
 
     # @classmethod

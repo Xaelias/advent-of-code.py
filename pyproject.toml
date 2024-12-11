@@ -12,7 +12,7 @@ dependencies = [
     "ipdb==0.13.13",
     "loguru==0.7.2",
     "networkx==3.2.1",
-    "numpy==1.26.2",
+    "numpy==2.1",
     "pyfunctional==1.4.3",
     "pytest==7.4.3",
     "regex==2023.12.25",
@@ -21,6 +21,7 @@ dependencies = [
     "shapely==2.0.6",
     "sympy==1.12",
     "peek-python>=1.6.2",
+    "igraph>=0.11.8",
 ]
 
 [tool.setuptools.packages.find]

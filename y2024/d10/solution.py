@@ -24,8 +24,8 @@ class Solution(Base):
                 valid.append((start, pos))
                 continue
 
-            for neighbor in p2.adj(pos, topographic_map.shape):
-                if topographic_map[neighbor] == value + 1:
+            for neighbor in p2.neighbors(pos, topographic_map.shape):
+                if topographic_map[*neighbor] == value + 1:
                     stack.append((start, value + 1, neighbor))
 
         return valid

@@ -1,5 +1,4 @@
 import math
-import os
 from abc import ABC
 from abc import abstractmethod
 from collections.abc import Iterator
@@ -9,26 +8,16 @@ from typing import Any
 from typing import Optional
 from typing import Union
 
+import loguru
 import numpy as np
 from functional import seq
 from functional.pipeline import Sequence
-from loguru import logger
-from peek import peek
 
 from aocl.parser import Puzzle
 
+logger = loguru.logger.opt(lazy=True)
 with suppress(Exception):
     logger.level("FAILED", no=25, color="<red>")
-
-
-yd = peek.new(
-    output=logger.debug,
-    show_line_number=True,
-    sort_dicts=True,
-    line_length=1000,
-    enabled=os.environ.get("LOGURU_LEVEL") in ("TRACE", "DEBUG"),
-)
-yt = yd.clone(output=logger.trace, enabled=os.environ.get("LOGURU_LEVEL") == "TRACE")
 
 
 class AoCInput:

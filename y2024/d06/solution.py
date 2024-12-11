@@ -122,11 +122,15 @@ def turn_right(dir: Callable) -> Callable:
     raise ValueError
 
 
+type X = int
+type Y = int
+
+
 def move_up_to_blockage(
     pos: P2,
     direction: Callable,
-    blockages_by_row: dict[p2.X, list[p2.Y]],
-    blockages_by_col: dict[p2.Y, list[p2.X]],
+    blockages_by_row: dict[X, list[Y]],
+    blockages_by_col: dict[Y, list[X]],
     shape: p2.Shape,
 ) -> P2:
     row, col = pos
@@ -166,10 +170,10 @@ def move_up_to_blockage(
                 next_row = shape[0]  # moving out of bound
         case _:
             raise ValueError(f"Unknown direction: {direction=}")
-    return next_row, next_col
+    return (next_row, next_col)
 
 
-def generate_blockages_dicts(lab: Map) -> tuple[dict[p2.X, list[p2.Y]], dict[p2.Y, list[p2.X]]]:
+def generate_blockages_dicts(lab: Map) -> tuple[dict[X, list[Y]], dict[Y, list[X]]]:
     shape = lab.shape
     by_rows = (
         seq(zip(*np.where(lab == "#")))
@@ -218,8 +222,8 @@ def clean_blockages(new_blockage: P2, blockages_by_row, blockages_by_col):
 
 def is_cycle(
     new_blockage: P2,
-    blockages_by_row: dict[p2.X, list[p2.Y]],
-    blockages_by_col: dict[p2.Y, list[p2.X]],
+    blockages_by_row: dict[X, list[Y]],
+    blockages_by_col: dict[Y, list[X]],
     starting_pos: P2,
     dir: Callable,
     shape: p2.Shape,
@@ -246,8 +250,8 @@ def is_cycle(
 
 def is_cycle_subroutine(
     new_blockage: P2,
-    blockages_by_row: dict[p2.X, list[p2.Y]],
-    blockages_by_col: dict[p2.Y, list[p2.X]],
+    blockages_by_row: dict[X, list[Y]],
+    blockages_by_col: dict[Y, list[X]],
     starting_pos: P2,
     dir: Callable,
     shape: p2.Shape,
@@ -280,7 +284,7 @@ class Solution(Base):
     @classmethod
     def process_part_one(cls, parsed_input: Map, **kwargs: Any) -> int:
         shape = parsed_input.shape
-        start_pos: P2 = next(zip(*np.where(parsed_input == "^")))
+        start_pos: P2 = p2.where_in_ndarray(parsed_input, "^")[0]
         directions = cycle([p2.up, p2.right, p2.down, p2.left])
 
         blockages_by_row, blockages_by_col = generate_blockages_dicts(parsed_input)
@@ -309,7 +313,7 @@ class Solution(Base):
     def process_part_two(cls, parsed_input: Map, **kwargs: Any) -> int:
         shape = parsed_input.shape
 
-        start_pos: P2 = next(zip(*np.where(parsed_input == "^")))
+        start_pos: P2 = p2.where_in_ndarray(parsed_input, "^")[0]
         been_there = set()
         been_there.add(start_pos)
 
@@ -324,7 +328,7 @@ class Solution(Base):
             next_pos = next_dir(curr_pos)
             if not p2.in_shape(next_pos, shape):
                 break
-            if parsed_input[next_pos] == "#":
+            if parsed_input[*next_pos] == "#":
                 next_dir = turn_right(curr_dir)
                 next_pos = next_dir(curr_pos)
 

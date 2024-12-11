@@ -7,7 +7,8 @@ from typing import Union
 import numpy as np
 from numpy.typing import NDArray
 
-from aocl.p2 import RULD, in_shape
+from aocl.p2 import RULD
+from aocl.p2 import in_shape
 
 
 def dijkstra(

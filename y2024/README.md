@@ -18,9 +18,9 @@ Day       Time    Rank  Score       Time   Rank  Score
  13   00:00:00       -      0   00:00:00      -      0
  12   00:00:00       -      0   00:00:00      -      0
  11   00:00:00       -      0   00:00:00      -      0
- 10   00:00:00       -      0   00:00:00      -      0
-  9   00:00:00       -      0   00:00:00      -      0
-  8   00:00:00       -      0   00:00:00      -      0
+ 10   11:09:40   30776      0   11:11:07  29580      0
+  9   16:20:21   42557      0   18:22:14  33926      0
+  8   10:05:43   32290      0   10:09:04  29438      0
   7   10:18:58   35194      0   10:26:14  32339      0
   6   09:16:06   41303      0   12:20:11  29711      0
   5   17:09:08   64864      0   17:31:14  55271      0
@@ -60,4 +60,16 @@ Day       Time    Rank  Score       Time   Rank  Score
    1.24s   2024/7  - Bridge Repair                              alesieur/account_x   ✔ part a: 1038838357795                      ✔ part b: 254136560217241
    1.36s   2024/7  - Bridge Repair                              alesieur/account_m   ✔ part a: 1708857123053                      ✔ part b: 189207836795655
    1.05s   2024/7  - Bridge Repair                              alesieur/account_r   ✔ part a: 2941973819040                      ✔ part b: 249943041417600
+   0.42s   2024/8  - Resonant Collinearity                      alesieur/account_g   ✔ part a: 323                                ✔ part b: 1077
+   0.31s   2024/8  - Resonant Collinearity                      alesieur/account_x   ✔ part a: 273                                ✔ part b: 1017
+   0.32s   2024/8  - Resonant Collinearity                      alesieur/account_m   ✔ part a: 323                                ✔ part b: 1077
+   0.31s   2024/8  - Resonant Collinearity                      alesieur/account_r   ✔ part a: 379                                ✔ part b: 1339
+   0.63s   2024/9  - Disk Fragmenter                            alesieur/account_g   ✔ part a: 6415184586041                      ✔ part b: 6436819084274
+   0.63s   2024/9  - Disk Fragmenter                            alesieur/account_x   ✔ part a: 6320029754031                      ✔ part b: 6347435485773
+   0.63s   2024/9  - Disk Fragmenter                            alesieur/account_m   ✔ part a: 6471961544878                      ✔ part b: 6511178035564
+   0.63s   2024/9  - Disk Fragmenter                            alesieur/account_r   ✔ part a: 6291146824486                      ✔ part b: 6307279963620
+   0.41s   2024/10 - Hoof It                                    alesieur/account_g   ✔ part a: 611                                ✔ part b: 1380
+   0.41s   2024/10 - Hoof It                                    alesieur/account_x   ✔ part a: 694                                ✔ part b: 1497
+   0.32s   2024/10 - Hoof It                                    alesieur/account_m   ✔ part a: 531                                ✔ part b: 1210
+   0.31s   2024/10 - Hoof It                                    alesieur/account_r   ✔ part a: 531                                ✔ part b: 1210
 ```

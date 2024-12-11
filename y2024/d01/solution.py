@@ -3,7 +3,6 @@ from typing import Any
 
 from aocl.base import AoCInput
 from aocl.base import Base
-from aocl.base import yd
 
 
 def abs_diff(input: tuple[str, str]) -> int:
@@ -18,9 +17,7 @@ class Solution(Base):
     @classmethod
     def process_part_one(cls, parsed_input: list[list[str]], **kwargs: Any) -> int:
         left = sorted(parsed_input[0])
-        yd(left)
         right = sorted(parsed_input[1])
-        yd(right)
 
         return sum(map(abs_diff, zip(left, right)))
 
@@ -31,15 +28,8 @@ class Solution(Base):
         left_count: dict[int, int] = Counter(left)
         right_count: dict[int, int] = Counter(right)
 
-        yd(left)
-        yd(left_count)
-
-        yd(right)
-        yd(right_count)
-
         total = 0
         for k in left_count:
             if k in right:
                 total += k * left_count[k] * right_count[k]
-                yd(k, total)
         return total
