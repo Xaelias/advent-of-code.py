@@ -5,9 +5,7 @@ from collections.abc import Callable
 from itertools import cycle
 from typing import Any
 
-import numpy as np
 from functional import seq
-from numpy.typing import NDArray
 
 from aocl import p2
 from aocl.base import AoCInput
@@ -15,7 +13,7 @@ from aocl.base import Base
 from aocl.base import sign
 from aocl.p2 import P2
 
-type Map = NDArray[[int, int], str]
+type Map = list[list[str]]
 
 
 # for debugging purposes
@@ -174,15 +172,16 @@ def move_up_to_blockage(
 
 
 def generate_blockages_dicts(lab: Map) -> tuple[dict[X, list[Y]], dict[Y, list[X]]]:
-    shape = lab.shape
+    shape = p2.shape(lab)
+    blockages = p2.where_in_matrix(lab, "#")
     by_rows = (
-        seq(zip(*np.where(lab == "#")))
+        seq(blockages)
         .group_by_key()
         .starmap(lambda key, value: (key, sorted(value + [-2, shape[0] + 1])))
         .to_dict()
     )
     by_cols = (
-        seq(zip(*np.where(lab == "#")))
+        seq(blockages)
         .starmap(lambda x, y: (y, x))
         .group_by_key()
         .starmap(lambda key, value: (key, sorted(value + [-2, shape[1] + 1])))
@@ -278,13 +277,13 @@ def is_cycle_subroutine(
 
 class Solution(Base):
     @classmethod
-    def parse(cls, input_data: AoCInput) -> NDArray:
-        return input_data.as_nparray
+    def parse(cls, input_data: AoCInput) -> Map:
+        return input_data.as_list_of_lists
 
     @classmethod
     def process_part_one(cls, parsed_input: Map, **kwargs: Any) -> int:
-        shape = parsed_input.shape
-        start_pos: P2 = p2.where_in_ndarray(parsed_input, "^")[0]
+        shape = p2.shape(parsed_input)
+        start_pos: P2 = p2.where_in_matrix(parsed_input, "^")[0]
         directions = cycle([p2.up, p2.right, p2.down, p2.left])
 
         blockages_by_row, blockages_by_col = generate_blockages_dicts(parsed_input)
@@ -311,9 +310,9 @@ class Solution(Base):
 
     @classmethod
     def process_part_two(cls, parsed_input: Map, **kwargs: Any) -> int:
-        shape = parsed_input.shape
+        shape = p2.shape(parsed_input)
 
-        start_pos: P2 = p2.where_in_ndarray(parsed_input, "^")[0]
+        start_pos: P2 = p2.where_in_matrix(parsed_input, "^")[0]
         been_there = set()
         been_there.add(start_pos)
 
@@ -328,7 +327,7 @@ class Solution(Base):
             next_pos = next_dir(curr_pos)
             if not p2.in_shape(next_pos, shape):
                 break
-            if parsed_input[*next_pos] == "#":
+            if parsed_input[next_pos[0]][next_pos[1]] == "#":
                 next_dir = turn_right(curr_dir)
                 next_pos = next_dir(curr_pos)
 

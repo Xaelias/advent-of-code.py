@@ -8,6 +8,10 @@ import numpy.typing as npt
 
 RULD = [(0, 1), (-1, 0), (0, -1), (1, 0)]
 
+type Matrix = list[list[Any]]
+type StrMatrix = list[list[str]]
+type IntMatrix = list[list[int]]
+type BoolMatrix = list[list[bool]]
 type Shape = tuple[int, ...]
 type P2 = tuple[int, int]
 
@@ -175,3 +179,12 @@ def rotate_matrix_right(matrix):
 
 def where_in_ndarray(ndarray: npt.NDArray, match: Any) -> list[P2]:
     return list(zip(*np.where(ndarray == match)))
+
+
+def where_in_matrix(matrix: Matrix, match: Any) -> list[P2]:
+    rows, cols = shape(matrix)
+    return [(i, j) for i in range(rows) for j in range(cols) if matrix[i][j] == match]
+
+
+def shape(matrix: Matrix) -> Shape:
+    return (len(matrix), len(matrix[0]))
