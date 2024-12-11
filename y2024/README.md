@@ -32,44 +32,44 @@ Day       Time    Rank  Score       Time   Rank  Score
 
 ```
 ❯ uv run aoc --years 2024
-   0.61s   2024/1  - Historian Hysteria                         alesieur/account_g   ✔ part a: 2378066                            ✔ part b: 18934359
-   0.42s   2024/1  - Historian Hysteria                         alesieur/account_x   ✔ part a: 2756096                            ✔ part b: 23117829
-   0.42s   2024/1  - Historian Hysteria                         alesieur/account_m   ✔ part a: 1189304                            ✔ part b: 24349736
-   0.41s   2024/1  - Historian Hysteria                         alesieur/account_r   ✔ part a: 1530215                            ✔ part b: 26800609
+   0.47s   2024/1  - Historian Hysteria                         alesieur/account_g   ✔ part a: 2378066                            ✔ part b: 18934359
+   0.32s   2024/1  - Historian Hysteria                         alesieur/account_x   ✔ part a: 2756096                            ✔ part b: 23117829
+   0.31s   2024/1  - Historian Hysteria                         alesieur/account_m   ✔ part a: 1189304                            ✔ part b: 24349736
+   0.32s   2024/1  - Historian Hysteria                         alesieur/account_r   ✔ part a: 1530215                            ✔ part b: 26800609
    0.31s   2024/2  - Red-Nosed Reports                          alesieur/account_g   ✔ part a: 242                                ✔ part b: 311
    0.32s   2024/2  - Red-Nosed Reports                          alesieur/account_x   ✔ part a: 442                                ✔ part b: 493
    0.32s   2024/2  - Red-Nosed Reports                          alesieur/account_m   ✔ part a: 257                                ✔ part b: 328
-   0.32s   2024/2  - Red-Nosed Reports                          alesieur/account_r   ✔ part a: 490                                ✔ part b: 536
-   0.31s   2024/3  - Mull It Over                               alesieur/account_g   ✔ part a: 162813399                          ✔ part b: 53783319
-   0.31s   2024/3  - Mull It Over                               alesieur/account_x   ✔ part a: 183788984                          ✔ part b: 62098619
+   0.31s   2024/2  - Red-Nosed Reports                          alesieur/account_r   ✔ part a: 490                                ✔ part b: 536
+   0.32s   2024/3  - Mull It Over                               alesieur/account_g   ✔ part a: 162813399                          ✔ part b: 53783319
+   0.30s   2024/3  - Mull It Over                               alesieur/account_x   ✔ part a: 183788984                          ✔ part b: 62098619
    0.31s   2024/3  - Mull It Over                               alesieur/account_m   ✔ part a: 174336360                          ✔ part b: 88802350
-   0.31s   2024/3  - Mull It Over                               alesieur/account_r   ✔ part a: 169021493                          ✔ part b: 111762583
-   0.41s   2024/4  - Ceres Search                               alesieur/account_g   ✔ part a: 2644                               ✔ part b: 1952
+   0.32s   2024/3  - Mull It Over                               alesieur/account_r   ✔ part a: 169021493                          ✔ part b: 111762583
+   0.42s   2024/4  - Ceres Search                               alesieur/account_g   ✔ part a: 2644                               ✔ part b: 1952
    0.41s   2024/4  - Ceres Search                               alesieur/account_x   ✔ part a: 2493                               ✔ part b: 1890
-   0.42s   2024/4  - Ceres Search                               alesieur/account_m   ✔ part a: 2378                               ✔ part b: 1796
-   0.41s   2024/4  - Ceres Search                               alesieur/account_r   ✔ part a: 2517                               ✔ part b: 1960
-   0.42s   2024/5  - Print Queue                                alesieur/account_g   ✔ part a: 5248                               ✔ part b: 4507
-   0.31s   2024/5  - Print Queue                                alesieur/account_x   ✔ part a: 5374                               ✔ part b: 4260
-   0.31s   2024/5  - Print Queue                                alesieur/account_m   ✔ part a: 4662                               ✔ part b: 5900
+   0.41s   2024/4  - Ceres Search                               alesieur/account_m   ✔ part a: 2378                               ✔ part b: 1796
+   0.32s   2024/4  - Ceres Search                               alesieur/account_r   ✔ part a: 2517                               ✔ part b: 1960
+   0.32s   2024/5  - Print Queue                                alesieur/account_g   ✔ part a: 5248                               ✔ part b: 4507
+   0.32s   2024/5  - Print Queue                                alesieur/account_x   ✔ part a: 5374                               ✔ part b: 4260
+   0.32s   2024/5  - Print Queue                                alesieur/account_m   ✔ part a: 4662                               ✔ part b: 5900
    0.31s   2024/5  - Print Queue                                alesieur/account_r   ✔ part a: 4609                               ✔ part b: 5723
-   2.04s   2024/6  - Guard Gallivant                            alesieur/account_g   ✔ part a: 4776                               ✔ part b: 1586
-   1.89s   2024/6  - Guard Gallivant                            alesieur/account_x   ✔ part a: 4758                               ✔ part b: 1670
-   1.99s   2024/6  - Guard Gallivant                            alesieur/account_m   ✔ part a: 4647                               ✔ part b: 1723
-   2.20s   2024/6  - Guard Gallivant                            alesieur/account_r   ✔ part a: 5153                               ✔ part b: 1711
-   1.39s   2024/7  - Bridge Repair                              alesieur/account_g   ✔ part a: 2314935962622                      ✔ part b: 401477450831495
-   1.24s   2024/7  - Bridge Repair                              alesieur/account_x   ✔ part a: 1038838357795                      ✔ part b: 254136560217241
-   1.36s   2024/7  - Bridge Repair                              alesieur/account_m   ✔ part a: 1708857123053                      ✔ part b: 189207836795655
-   1.05s   2024/7  - Bridge Repair                              alesieur/account_r   ✔ part a: 2941973819040                      ✔ part b: 249943041417600
-   0.42s   2024/8  - Resonant Collinearity                      alesieur/account_g   ✔ part a: 323                                ✔ part b: 1077
-   0.31s   2024/8  - Resonant Collinearity                      alesieur/account_x   ✔ part a: 273                                ✔ part b: 1017
+   1.37s   2024/6  - Guard Gallivant                            alesieur/account_g   ✔ part a: 4776                               ✔ part b: 1586
+   1.46s   2024/6  - Guard Gallivant                            alesieur/account_x   ✔ part a: 4758                               ✔ part b: 1670
+   1.58s   2024/6  - Guard Gallivant                            alesieur/account_m   ✔ part a: 4647                               ✔ part b: 1723
+   1.67s   2024/6  - Guard Gallivant                            alesieur/account_r   ✔ part a: 5153                               ✔ part b: 1711
+   1.26s   2024/7  - Bridge Repair                              alesieur/account_g   ✔ part a: 2314935962622                      ✔ part b: 401477450831495
+   1.26s   2024/7  - Bridge Repair                              alesieur/account_x   ✔ part a: 1038838357795                      ✔ part b: 254136560217241
+   1.32s   2024/7  - Bridge Repair                              alesieur/account_m   ✔ part a: 1708857123053                      ✔ part b: 189207836795655
+   1.02s   2024/7  - Bridge Repair                              alesieur/account_r   ✔ part a: 2941973819040                      ✔ part b: 249943041417600
+   0.32s   2024/8  - Resonant Collinearity                      alesieur/account_g   ✔ part a: 323                                ✔ part b: 1077
+   0.32s   2024/8  - Resonant Collinearity                      alesieur/account_x   ✔ part a: 273                                ✔ part b: 1017
    0.32s   2024/8  - Resonant Collinearity                      alesieur/account_m   ✔ part a: 323                                ✔ part b: 1077
-   0.31s   2024/8  - Resonant Collinearity                      alesieur/account_r   ✔ part a: 379                                ✔ part b: 1339
+   0.30s   2024/8  - Resonant Collinearity                      alesieur/account_r   ✔ part a: 379                                ✔ part b: 1339
    0.63s   2024/9  - Disk Fragmenter                            alesieur/account_g   ✔ part a: 6415184586041                      ✔ part b: 6436819084274
    0.63s   2024/9  - Disk Fragmenter                            alesieur/account_x   ✔ part a: 6320029754031                      ✔ part b: 6347435485773
-   0.63s   2024/9  - Disk Fragmenter                            alesieur/account_m   ✔ part a: 6471961544878                      ✔ part b: 6511178035564
+   0.62s   2024/9  - Disk Fragmenter                            alesieur/account_m   ✔ part a: 6471961544878                      ✔ part b: 6511178035564
    0.63s   2024/9  - Disk Fragmenter                            alesieur/account_r   ✔ part a: 6291146824486                      ✔ part b: 6307279963620
-   0.41s   2024/10 - Hoof It                                    alesieur/account_g   ✔ part a: 611                                ✔ part b: 1380
-   0.41s   2024/10 - Hoof It                                    alesieur/account_x   ✔ part a: 694                                ✔ part b: 1497
-   0.32s   2024/10 - Hoof It                                    alesieur/account_m   ✔ part a: 531                                ✔ part b: 1210
-   0.31s   2024/10 - Hoof It                                    alesieur/account_r   ✔ part a: 531                                ✔ part b: 1210
+   0.32s   2024/10 - Hoof It                                    alesieur/account_g   ✔ part a: 611                                ✔ part b: 1380
+   0.32s   2024/10 - Hoof It                                    alesieur/account_x   ✔ part a: 694                                ✔ part b: 1497
+   0.31s   2024/10 - Hoof It                                    alesieur/account_m   ✔ part a: 531                                ✔ part b: 1210
+   0.30s   2024/10 - Hoof It                                    alesieur/account_r   ✔ part a: 531                                ✔ part b: 1210
 ```
