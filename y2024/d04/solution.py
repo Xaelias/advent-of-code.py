@@ -59,7 +59,7 @@ def is_x_mas(nparray: p2.StrMatrix, a_pos: p2.P2) -> bool:
 
 class Solution(Base):
     @classmethod
-    def parse(cls, input_data: AoCInput) -> list[list[str]]:
+    def parse(cls, input_data: AoCInput) -> p2.StrMatrix:
         return input_data.as_list_of_lists
 
     @classmethod

@@ -172,3 +172,8 @@ def shape(matrix: Matrix) -> Shape:
 
 def matrix_get[U](matrix: list[list[U]], pos: P2) -> U:
     return matrix[pos[0]][pos[1]]
+
+
+def matrix_unique[U](matrix: list[list[U]]) -> set[U]:
+    rows, cols = shape(matrix)
+    return {matrix[i][j] for i in range(rows) for j in range(cols)}

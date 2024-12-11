@@ -1,9 +1,6 @@
 import itertools
 from typing import Any
 
-import numpy as np
-from numpy.typing import NDArray
-
 from aocl import p2
 from aocl.base import AoCInput
 from aocl.base import Base
@@ -13,15 +10,15 @@ type Antinode = p2.P2
 type Antenna = p2.P2
 
 
-def draw_map(ndarray: NDArray, antinodes: set[p2.P2]) -> str:
-    shape = ndarray.shape
+def draw_map(matrix: p2.StrMatrix, antinodes: set[p2.P2]) -> str:
+    shape = p2.shape(matrix)
 
     result = [""]
 
     for i in range(shape[0]):
         row = []
         for j in range(shape[1]):
-            og = ndarray[(i, j)]
+            og = matrix[i][j]
             if (i, j) in antinodes and og == ".":
                 row.append("#")
             else:
@@ -32,21 +29,21 @@ def draw_map(ndarray: NDArray, antinodes: set[p2.P2]) -> str:
 
 class Solution(Base):
     @classmethod
-    def parse(cls, input_data: AoCInput) -> Any:
-        return input_data.as_nparray
+    def parse(cls, input_data: AoCInput) -> p2.StrMatrix:
+        return input_data.as_list_of_lists
 
     @classmethod
-    def process_part_one(cls, parsed_input: NDArray, **kwargs: Any) -> int:
+    def process_part_one(cls, parsed_input: p2.StrMatrix, **kwargs: Any) -> int:
         antinodes: set[Antinode] = set()
-        shape = parsed_input.shape
+        shape = p2.shape(parsed_input)
         # not the most efficient :shrug:
-        frequencies = np.unique(parsed_input)
+        frequencies = p2.matrix_unique(parsed_input)
         for frequency in frequencies:
             if frequency == ".":
                 continue
             logger.debug(f"processing all antennas w/ frequency {frequency}")
 
-            antennas: list[Antenna] = p2.where_in_ndarray(parsed_input, frequency)
+            antennas: list[Antenna] = p2.where_in_matrix(parsed_input, frequency)
             logger.trace(f"found {len(antennas)} antennas w/ frequency {frequency}")
 
             for antenna_a, antenna_b in itertools.combinations(antennas, 2):
@@ -67,17 +64,17 @@ class Solution(Base):
         return len(antinodes)
 
     @classmethod
-    def process_part_two(cls, parsed_input: NDArray, **kwargs: Any) -> int:
+    def process_part_two(cls, parsed_input: p2.StrMatrix, **kwargs: Any) -> int:
         antinodes: set[Antinode] = set()
-        shape = parsed_input.shape
+        shape = p2.shape(parsed_input)
         # not the most efficient :shrug:
-        frequencies = np.unique(parsed_input)
+        frequencies = p2.matrix_unique(parsed_input)
         for frequency in frequencies:
             if frequency == ".":
                 continue
             logger.debug(f"processing all antennas w/ frequency {frequency}")
 
-            antennas: list[Antenna] = p2.where_in_ndarray(parsed_input, frequency)
+            antennas: list[Antenna] = p2.where_in_matrix(parsed_input, frequency)
             logger.trace(f"found {len(antennas)} antennas w/ frequency {frequency}")
 
             for antenna_a, antenna_b in itertools.combinations(antennas, 2):
