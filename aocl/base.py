@@ -48,13 +48,13 @@ class AoCInput:
         return [int(word) for word in self.input_data.split()]
 
     @property
-    def as_strmastrix(self) -> p2.StrMatrix:  # not necessarily a real matrix (n×m shape)
-        return [line.split() for line in self.input_data.strip("\n").split("\n")]
+    def as_strmatrix(self) -> p2.StrMatrix:  # not necessarily a real matrix (n×m shape)
+        return [list(line) for line in self.input_data.strip("\n").split("\n")]
 
     @property
     def as_intmatrix(self) -> p2.IntMatrix:  # not necessarily a real matrix (n×m shape)
         return [
-            [int(word) for word in line.split()] for line in self.input_data.strip("\n").split("\n")
+            [int(word) for word in list(line)] for line in self.input_data.strip("\n").split("\n")
         ]
 
     # old
