@@ -16,8 +16,8 @@ Day       Time    Rank  Score       Time   Rank  Score
  15   00:00:00       -      0   00:00:00      -      0
  14   00:00:00       -      0   00:00:00      -      0
  13   00:00:00       -      0   00:00:00      -      0
- 12   00:00:00       -      0   00:00:00      -      0
- 11   00:00:00       -      0   00:00:00      -      0
+ 12   15:46:20   32726      0   17:03:16  22272      0
+ 11   14:36:15   41462      0       >24h  40724      0
  10   11:09:40   30776      0   11:11:07  29580      0
   9   16:20:21   42557      0   18:22:14  33926      0
   8   10:05:43   32290      0   10:09:04  29438      0
@@ -72,4 +72,12 @@ Day       Time    Rank  Score       Time   Rank  Score
    0.32s   2024/10 - Hoof It                                    alesieur/account_x   ✔ part a: 694                                ✔ part b: 1497
    0.31s   2024/10 - Hoof It                                    alesieur/account_m   ✔ part a: 531                                ✔ part b: 1210
    0.30s   2024/10 - Hoof It                                    alesieur/account_r   ✔ part a: 531                                ✔ part b: 1210
+   0.42s   2024/11 - Plutonian Pebbles                          alesieur/account_g   ✔ part a: 197357                             ✔ part b: 234568186890978
+   0.42s   2024/11 - Plutonian Pebbles                          alesieur/account_x   ✔ part a: 218956                             ✔ part b: 259593838049805
+   0.41s   2024/11 - Plutonian Pebbles                          alesieur/account_m   ✔ part a: 203953                             ✔ part b: 242090118578155
+   0.42s   2024/11 - Plutonian Pebbles                          alesieur/account_r   ✔ part a: 203457                             ✔ part b: 241394363462435
+   0.41s   2024/12 - Garden Groups                              alesieur/account_g   ✔ part a: 1573474                            ✔ part b: 966476
+   0.31s   2024/12 - Garden Groups                              alesieur/account_x   ✔ part a: 1433460                            ✔ part b: 855082
+   0.30s   2024/12 - Garden Groups                              alesieur/account_m   ✔ part a: 1473408                            ✔ part b: 886364
+   0.31s   2024/12 - Garden Groups                              alesieur/account_r   ✔ part a: 1550156                            ✔ part b: 946084
 ```
