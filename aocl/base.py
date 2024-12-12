@@ -13,6 +13,7 @@ import numpy as np
 from functional import seq
 from functional.pipeline import Sequence
 
+from aocl import p2
 from aocl.parser import Puzzle
 
 logger = loguru.logger.opt(lazy=True)
@@ -34,6 +35,29 @@ class AoCInput:
     def raw(self) -> str:
         return self.input_data.strip("\n")
 
+    @property
+    def as_lines(self) -> list[str]:
+        return self.input_data.strip("\n").split("\n")
+
+    @property
+    def as_words(self) -> list[str]:
+        return self.input_data.split()
+
+    @property
+    def as_ints(self) -> list[int]:
+        return [int(word) for word in self.input_data.split()]
+
+    @property
+    def as_strmastrix(self) -> p2.StrMatrix:  # not necessarily a real matrix (n×m shape)
+        return [line.split() for line in self.input_data.strip("\n").split("\n")]
+
+    @property
+    def as_intmatrix(self) -> p2.IntMatrix:  # not necessarily a real matrix (n×m shape)
+        return [
+            [int(word) for word in line.split()] for line in self.input_data.strip("\n").split("\n")
+        ]
+
+    # old
     @property
     def as_chunks(self) -> list[list[str]]:
         return [chunk.split("\n") for chunk in self.raw.split("\n\n")]
