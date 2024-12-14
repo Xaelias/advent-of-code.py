@@ -106,15 +106,23 @@ def cli() -> None:
         help="Provide arguments to be passed to the process method for Part Two.",
         default={},
     )
+    override_parser.add_argument(
+        "--solution",
+        metavar="solution",
+        help="Name of package containing alternative solution (y____/d__/solution_<this_bit>.py)",
+        default=None,
+    )
 
     args = parser.parse_args()
     logger.remove()
     logger.add(sys.stderr, level=args.llevel)
     os.environ["LOGURU_LEVEL"] = args.llevel
 
-    # mod_name = "{}.day.{}.solution".format(args.year, args.day)
-    mod_name = f"y{args.year}.d{args.day:02}.solution"
-    mod = importlib.import_module(mod_name)
+    mod_name = "solution"
+    if args.solution:
+        mod_name += f"_{args.solution}"
+    mod_path = f"y{args.year}.d{args.day:02}.{mod_name}"
+    mod = importlib.import_module(mod_path)
     logger.trace(mod.__file__)
 
     parts_default = True
@@ -146,7 +154,7 @@ def cli() -> None:
 
 
 def mysolve(year: int, day: int, data: str) -> None:
-    mod_name = f"y{year}.d{day:02}.solution"
-    mod = importlib.import_module(mod_name)
+    mod_path = f"y{year}.d{day:02}.solution"
+    mod = importlib.import_module(mod_path)
     logger.remove()
     return mod.Solution(year=year, day=day, data=data).get_answers()
