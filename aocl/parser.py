@@ -104,11 +104,14 @@ class Puzzle:
                 parsed_parameters: dict[str, list[ProblemParameters]] = {"a": [], "b": []}
 
                 wip: dict[str, Any] = {}
+                extra: dict[str, str] = {}
                 for line in parameters.split("\n"):
                     if not line or line.startswith("#"):
                         continue
                     key, value = line.split(": ", maxsplit=1)
                     if key == "extra":
+                        k, v = value.split("=")
+                        extra[k] = v
                         continue
                     part = key[-1:]
                     target = key[:-2]
@@ -133,6 +136,12 @@ class Puzzle:
                             answer=wip["answer"],
                         )
                     )
+                if extra:
+                    for parts in parsed_parameters:
+                        for parameters in parsed_parameters[parts]:
+                            for k, v in extra.items():
+                                if k not in parameters.kwargs:
+                                    parameters.kwargs[k] = v
                 self.examples.append(
                     Prompt(
                         input_data=input_data,
