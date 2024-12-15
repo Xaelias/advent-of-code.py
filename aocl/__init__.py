@@ -72,7 +72,7 @@ def cli() -> None:
         help="Set log level",
         metavar="LEVEL",
         choices=["TRACE", "DEBUG", "INFO", "SUCCESS", "FAILED", "WARNING", "ERROR", "CRITICAL"],
-        default="INFO",
+        default="SUCCESS",
     )
     main_args_parser.add_argument("--profile", action="store_true", help="Run day through cProfile")
 

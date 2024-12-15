@@ -16,7 +16,7 @@ from functional.pipeline import Sequence
 from aocl import p2
 from aocl.parser import Puzzle
 
-logger = loguru.logger.opt(lazy=True)
+logger = loguru.logger.opt(lazy=True, colors=True)
 with suppress(Exception):
     logger.level("FAILED", no=25, color="<red>")
 
