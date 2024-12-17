@@ -22,7 +22,7 @@ def dijkstra(
 
     size_x = len(input_data)
     size_y = len(input_data[0])
-    costs = np.full((size_x, size_y) + (4,), None)
+    costs = np.full((size_x, size_y, 4), None)
 
     while heap:
         cost, position, direction = heappop(heap)
